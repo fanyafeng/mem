@@ -22,8 +22,8 @@ open class HttpResponseParserImpl : AbsHttpResponseParser() {
         response: IHttpResponse
     ): T {
         response.code = jsonObject.getString("code")
-        response.success = jsonObject.getBoolean("success")
-        response.message = jsonObject.getString("message")
+//        response.success = jsonObject.getBoolean("success")
+        response.message = jsonObject.getString("msg")
         response.data = jsonObject.getString("data")
         val itemClazz = response.itemKClass
         return JSON.parseObject<T>(response.data, itemClazz)
