@@ -1,11 +1,14 @@
 package cn.edu.bjtu.gs.main.homepage
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import cn.edu.bjtu.gs.R
+import cn.edu.bjtu.gs.databinding.FragmentHomePageBinding
+import cn.edu.bjtu.gs.main.login.LoginActivity
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -22,6 +25,8 @@ class HomePageFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    private var binding: FragmentHomePageBinding? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -30,11 +35,28 @@ class HomePageFragment : Fragment() {
         }
     }
 
+    private fun initView() {
+        binding?.test?.setOnClickListener {
+            startActivity(Intent(activity, LoginActivity::class.java))
+        }
+    }
+
+    private fun initData() {
+
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_home_page, container, false)
+        binding = FragmentHomePageBinding.inflate(inflater, container, false)
+        return binding?.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initView()
+        initData()
     }
 
     companion object {
@@ -55,5 +77,10 @@ class HomePageFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
     }
 }
