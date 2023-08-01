@@ -1,14 +1,17 @@
-package cn.edu.bjtu.gs.main.login.api
+package cn.edu.bjtu.gs.main.login
 
-import cn.edu.bjtu.gs.http.HttpRequestParamsImpl
-import cn.edu.bjtu.gs.main.url.Urls
-import com.ripple.http.base.HttpMethod
-import com.ripple.http.base.annotation.HttpRequest
+import android.content.Context
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import cn.edu.bjtu.gs.cache.CacheDatabase
+import cn.edu.bjtu.gs.cache.CacheModel
+import cn.edu.bjtu.gs.http.HttpParamsBuilderImpl.Companion.TOKEN
+import kotlinx.coroutines.launch
 
 
 /**
  * Author: fanyafeng
- * Data: 2023/7/24 15:40
+ * Data: 2023/8/1 14:50
  * Email: fanyafeng@live.cn
  * Description:
  *                                   _ooOoo_
@@ -43,10 +46,17 @@ import com.ripple.http.base.annotation.HttpRequest
  *///Github See: https://github.com/fanyafeng
 
 
-@HttpRequest(Urls.URL_LOGIN)
-class LoginPostParam : HttpRequestParamsImpl() {
+class LoginViewModel : ViewModel() {
 
-    var username = "13661330617"
-
-    var password = "123456"
+    suspend fun saveToken(context: Context, tokenFrom: String) {
+        viewModelScope.launch {
+            val dao = CacheDatabase.getDatabase(context).cacheDao()
+            val token = dao.query(TOKEN)?.value
+            if (token.isNullOrEmpty()) {
+                dao.insert(CacheModel(TOKEN, tokenFrom))
+            } else {
+                dao.update(CacheModel(TOKEN, tokenFrom))
+            }
+        }
+    }
 }

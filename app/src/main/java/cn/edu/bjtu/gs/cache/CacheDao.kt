@@ -1,14 +1,11 @@
-package cn.edu.bjtu.gs.main.login.api
+package cn.edu.bjtu.gs.cache
 
-import cn.edu.bjtu.gs.http.HttpRequestParamsImpl
-import cn.edu.bjtu.gs.main.url.Urls
-import com.ripple.http.base.HttpMethod
-import com.ripple.http.base.annotation.HttpRequest
+import androidx.room.*
 
 
 /**
  * Author: fanyafeng
- * Data: 2023/7/24 15:40
+ * Data: 2023/8/1 14:09
  * Email: fanyafeng@live.cn
  * Description:
  *                                   _ooOoo_
@@ -43,10 +40,21 @@ import com.ripple.http.base.annotation.HttpRequest
  *///Github See: https://github.com/fanyafeng
 
 
-@HttpRequest(Urls.URL_LOGIN)
-class LoginPostParam : HttpRequestParamsImpl() {
+@Dao
+interface CacheDao {
 
-    var username = "13661330617"
+    @Query("delete from cache_table where `key` = :key")
+    suspend fun deleteItemByKey(key: String)
 
-    var password = "123456"
+    @Query("delete from cache_table")
+    suspend fun deleteAll()
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insert(cache: CacheModel)
+
+    @Update
+    suspend fun update(cache: CacheModel)
+
+    @Query("select * from cache_table where `key` = :key")
+    suspend fun query(key: String): CacheModel?
 }

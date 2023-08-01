@@ -1,14 +1,13 @@
-package cn.edu.bjtu.gs.main.login.api
+package cn.edu.bjtu.gs.cache
 
-import cn.edu.bjtu.gs.http.HttpRequestParamsImpl
-import cn.edu.bjtu.gs.main.url.Urls
-import com.ripple.http.base.HttpMethod
-import com.ripple.http.base.annotation.HttpRequest
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 
 /**
  * Author: fanyafeng
- * Data: 2023/7/24 15:40
+ * Data: 2023/8/1 14:09
  * Email: fanyafeng@live.cn
  * Description:
  *                                   _ooOoo_
@@ -43,10 +42,8 @@ import com.ripple.http.base.annotation.HttpRequest
  *///Github See: https://github.com/fanyafeng
 
 
-@HttpRequest(Urls.URL_LOGIN)
-class LoginPostParam : HttpRequestParamsImpl() {
-
-    var username = "13661330617"
-
-    var password = "123456"
-}
+@Entity(tableName = "cache_table")
+data class CacheModel(
+    @PrimaryKey @ColumnInfo(name = "key") val key: String,
+    @ColumnInfo(name = "value") val value: String
+)

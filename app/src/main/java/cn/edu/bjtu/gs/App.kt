@@ -1,14 +1,11 @@
-package cn.edu.bjtu.gs.main.login.api
+package cn.edu.bjtu.gs
 
-import cn.edu.bjtu.gs.http.HttpRequestParamsImpl
-import cn.edu.bjtu.gs.main.url.Urls
-import com.ripple.http.base.HttpMethod
-import com.ripple.http.base.annotation.HttpRequest
+import android.app.Application
 
 
 /**
  * Author: fanyafeng
- * Data: 2023/7/24 15:40
+ * Data: 2023/8/1 15:09
  * Email: fanyafeng@live.cn
  * Description:
  *                                   _ooOoo_
@@ -43,10 +40,14 @@ import com.ripple.http.base.annotation.HttpRequest
  *///Github See: https://github.com/fanyafeng
 
 
-@HttpRequest(Urls.URL_LOGIN)
-class LoginPostParam : HttpRequestParamsImpl() {
+class App : Application() {
 
-    var username = "13661330617"
+    companion object {
+        var application: Application? = null
+    }
 
-    var password = "123456"
+    override fun onCreate() {
+        super.onCreate()
+        application = this
+    }
 }
