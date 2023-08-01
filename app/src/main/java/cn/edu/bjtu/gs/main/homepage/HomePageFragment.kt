@@ -9,6 +9,9 @@ import android.view.ViewGroup
 import cn.edu.bjtu.gs.R
 import cn.edu.bjtu.gs.databinding.FragmentHomePageBinding
 import cn.edu.bjtu.gs.main.login.LoginActivity
+import cn.edu.bjtu.gs.main.register.RegisterActivity
+import cn.edu.bjtu.gs.main.splash.SplashActivity
+import cn.edu.bjtu.gs.main.verify.VerifyActivity
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -39,6 +42,20 @@ class HomePageFragment : Fragment() {
         binding?.test?.setOnClickListener {
             startActivity(Intent(activity, LoginActivity::class.java))
         }
+
+        binding?.register?.setOnClickListener {
+            startActivity(Intent(activity, RegisterActivity::class.java))
+        }
+
+        binding?.splash?.setOnClickListener {
+            startActivity(Intent(activity, SplashActivity::class.java))
+        }
+
+        binding?.verify?.setOnClickListener {
+            startActivity(Intent(activity, VerifyActivity::class.java))
+        }
+
+
     }
 
     private fun initData() {

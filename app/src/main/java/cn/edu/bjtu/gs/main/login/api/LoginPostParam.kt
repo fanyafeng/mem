@@ -1,7 +1,7 @@
 package cn.edu.bjtu.gs.main.login.api
 
 import cn.edu.bjtu.gs.http.HttpRequestParamsImpl
-import cn.edu.bjtu.gs.main.url.Urls
+import cn.edu.bjtu.gs.url.Urls
 import com.ripple.http.base.HttpMethod
 import com.ripple.http.base.annotation.HttpRequest
 

@@ -1,4 +1,4 @@
-package cn.edu.bjtu.gs.main.url
+package cn.edu.bjtu.gs.url
 
 /**
  * Author: fanyafeng
@@ -43,4 +43,6 @@ object Urls {
     const val URL_LOGIN = "/login"
 
     const val URL_REGISTER = "/register"
+
+    const val URL_VERIFY = "/verify"
 }

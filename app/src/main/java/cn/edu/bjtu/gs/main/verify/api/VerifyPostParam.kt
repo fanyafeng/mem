@@ -1,4 +1,4 @@
-package cn.edu.bjtu.gs.main.register.api
+package cn.edu.bjtu.gs.main.verify.api
 
 import cn.edu.bjtu.gs.http.HttpRequestParamsImpl
 import cn.edu.bjtu.gs.url.Urls
@@ -7,7 +7,7 @@ import com.ripple.http.base.annotation.HttpRequest
 
 /**
  * Author: fanyafeng
- * Data: 2023/7/24 15:58
+ * Data: 2023/8/1 15:38
  * Email: fanyafeng@live.cn
  * Description:
  *                                   _ooOoo_
@@ -41,9 +41,8 @@ import com.ripple.http.base.annotation.HttpRequest
  *                         不见满街漂亮妹，哪个归得程序员？
  *///Github See: https://github.com/fanyafeng
 
-
-@HttpRequest(Urls.URL_REGISTER)
-class RegisterPostParam : HttpRequestParamsImpl() {
-    var username = ""
-    var password = ""
+@HttpRequest(Urls.URL_VERIFY)
+class VerifyPostParam : HttpRequestParamsImpl() {
+    var number: String? = null
+    var idcard: String? = null
 }

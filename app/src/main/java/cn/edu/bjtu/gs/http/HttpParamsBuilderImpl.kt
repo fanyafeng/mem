@@ -2,7 +2,7 @@ package cn.edu.bjtu.gs.http
 
 import cn.edu.bjtu.gs.App
 import cn.edu.bjtu.gs.cache.CacheDatabase
-import cn.edu.bjtu.gs.main.url.Urls
+import cn.edu.bjtu.gs.url.Urls
 import com.ripple.http.base.IRequestParams
 import com.ripple.http.base.abs.AbsHttpParamsBuilder
 import kotlinx.coroutines.runBlocking
@@ -21,7 +21,7 @@ import kotlinx.coroutines.runBlocking
 class HttpParamsBuilderImpl : AbsHttpParamsBuilder() {
 
     companion object {
-        const val TOKEN = "token"
+        const val TOKEN = "Authorization"
     }
 
     override fun getDefaultHost(): String {
