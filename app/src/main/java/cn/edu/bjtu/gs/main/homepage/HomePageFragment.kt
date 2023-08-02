@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import cn.edu.bjtu.gs.R
 import cn.edu.bjtu.gs.databinding.FragmentHomePageBinding
 import cn.edu.bjtu.gs.main.login.LoginActivity
+import cn.edu.bjtu.gs.main.personalinformation.PersonalInformationActivity
 import cn.edu.bjtu.gs.main.register.RegisterActivity
 import cn.edu.bjtu.gs.main.splash.SplashActivity
 import cn.edu.bjtu.gs.main.verify.VerifyActivity
@@ -53,6 +54,10 @@ class HomePageFragment : Fragment() {
 
         binding?.verify?.setOnClickListener {
             startActivity(Intent(activity, VerifyActivity::class.java))
+        }
+
+        binding?.personalInformation?.setOnClickListener {
+            startActivity(Intent(activity, PersonalInformationActivity::class.java))
         }
 
 

@@ -11,7 +11,7 @@
         android:id="@+id/test"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="首页fragment" />
+        android:text="登录" />
 
     <Button
         android:id="@+id/register"
@@ -30,5 +30,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="身份验证" />
+
+    <Button
+        android:id="@+id/personalInformation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="补充个人信息" />
 
 </LinearLayout>
