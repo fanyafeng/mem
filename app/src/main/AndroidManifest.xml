@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -10,8 +11,13 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.Mem"
-        android:name=".App"
         tools:targetApi="31">
+        <activity
+            android:name=".main.setpassword.SetPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".main.forgotpassword.ForgotPasswordActivity"
+            android:exported="false" />
         <activity
             android:name=".main.personalinformation.PersonalInformationActivity"
             android:exported="false" />

@@ -8,9 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import cn.edu.bjtu.gs.R
 import cn.edu.bjtu.gs.databinding.FragmentHomePageBinding
+import cn.edu.bjtu.gs.main.forgotpassword.ForgotPasswordActivity
 import cn.edu.bjtu.gs.main.login.LoginActivity
 import cn.edu.bjtu.gs.main.personalinformation.PersonalInformationActivity
 import cn.edu.bjtu.gs.main.register.RegisterActivity
+import cn.edu.bjtu.gs.main.setpassword.SetPasswordActivity
 import cn.edu.bjtu.gs.main.splash.SplashActivity
 import cn.edu.bjtu.gs.main.verify.VerifyActivity
 
@@ -58,6 +60,14 @@ class HomePageFragment : Fragment() {
 
         binding?.personalInformation?.setOnClickListener {
             startActivity(Intent(activity, PersonalInformationActivity::class.java))
+        }
+
+        binding?.forgotPassword?.setOnClickListener {
+            startActivity(Intent(activity, ForgotPasswordActivity::class.java))
+        }
+
+        binding?.setPassword?.setOnClickListener {
+            startActivity(Intent(activity, SetPasswordActivity::class.java))
         }
 
 
