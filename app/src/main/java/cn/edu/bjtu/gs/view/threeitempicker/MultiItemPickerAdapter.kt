@@ -49,7 +49,7 @@ class MultiItemPickerAdapter : WheelAdapter {
     }
 
     override fun getItem(index: Int): String {
-        return list?.get(index)?.getTitle() ?: ""
+        return list?.get(index)?.getShowTitle() ?: ""
     }
 
     override fun getMaximumLength(): Int {

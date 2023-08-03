@@ -56,31 +56,23 @@
 
     <cn.edu.bjtu.gs.view.picker.WheelView
         android:id="@+id/firstWheel"
-        android:layout_width="120dp"
+        android:layout_width="0dp"
         android:layout_height="200dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/secondWheel"
         app:layout_constraintTop_toBottomOf="@+id/topLine" />
 
     <cn.edu.bjtu.gs.view.picker.WheelView
         android:id="@+id/secondWheel"
-        android:layout_width="120dp"
+        android:layout_width="0dp"
         android:layout_height="200dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintLeft_toRightOf="@+id/firstWheel"
-        app:layout_constraintRight_toLeftOf="@id/thirdWheel"
-        app:layout_constraintTop_toBottomOf="@+id/topLine" />
-
-    <cn.edu.bjtu.gs.view.picker.WheelView
-        android:id="@+id/thirdWheel"
-        android:layout_width="120dp"
-        android:layout_height="200dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintLeft_toRightOf="@+id/secondWheel"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/topLine" />
 

@@ -42,5 +42,5 @@ import cn.edu.bjtu.gs.BaseModel
 
 interface IMultiItemPickerModel : BaseModel {
 
-    fun getTitle(): String
+    fun getShowTitle(): String
 }

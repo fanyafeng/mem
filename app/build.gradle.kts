@@ -1,13 +1,13 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-//    id("kotlin-android")
+    id("kotlin-android")
     id("kotlin-kapt")
 }
 
 android {
     namespace = "cn.edu.bjtu.gs"
-    compileSdk = 32
+    compileSdk = 33
 
     defaultConfig {
         applicationId = "cn.edu.bjtu.gs"
@@ -74,7 +74,8 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1")
     //okhttp
     implementation("com.squareup.okhttp3:okhttp:4.9.3")
-    implementation("com.alibaba:fastjson:1.1.72.android")
+    implementation("com.alibaba:fastjson:2.0.10.android")
+    implementation("com.google.code.gson:gson:2.10.1")
 
     //coil
 //    implementation("io.coil-kt:coil:1.0.0")
@@ -95,10 +96,13 @@ dependencies {
     implementation("androidx.datastore:datastore:1.0.0")
     implementation("androidx.datastore:datastore-preferences:1.0.0")
 
+
     //android room
 //    val room_version = "2.4.2"
-    implementation("androidx.room:room-runtime:2.4.2")
-    annotationProcessor("androidx.room:room-compiler:2.4.2")
+    implementation("androidx.room:room-runtime:2.5.0")
+    implementation("androidx.room:room-ktx:2.5.0")
+    annotationProcessor("androidx.room:room-compiler:2.5.0")
+    kapt("androidx.room:room-compiler:2.5.0")
 
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")

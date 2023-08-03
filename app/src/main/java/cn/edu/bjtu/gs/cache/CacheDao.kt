@@ -44,7 +44,7 @@ import androidx.room.*
 interface CacheDao {
 
     @Query("delete from cache_table where `key` = :key")
-    suspend fun deleteItemByKey(key: String)
+    suspend fun deleteItemByKey(key: String): Unit
 
     @Query("delete from cache_table")
     suspend fun deleteAll()

@@ -1,8 +1,11 @@
-package cn.edu.bjtu.gs.url
+package cn.edu.bjtu.gs.view.region
+
+import cn.edu.bjtu.gs.view.picker.WheelAdapter
+
 
 /**
  * Author: fanyafeng
- * Data: 2023/7/24 15:36
+ * Data: 2023/8/2 10:33
  * Email: fanyafeng@live.cn
  * Description:
  *                                   _ooOoo_
@@ -37,14 +40,19 @@ package cn.edu.bjtu.gs.url
  *///Github See: https://github.com/fanyafeng
 
 
-object Urls {
-    const val BASE_URL = "http://106.75.240.243:8029"
+class RegionPickerAdapter : WheelAdapter {
 
-    const val URL_LOGIN = "/login"
+     var list: List<RegionModel>? = null
 
-    const val URL_REGISTER = "/register"
+    override fun getItemsCount(): Int {
+        return list?.size ?: 0
+    }
 
-    const val URL_VERIFY = "/verify"
+    override fun getItem(index: Int): String {
+        return list?.get(index)?.name ?: ""
+    }
 
-    const val URL_REGION = "/system/user/profile/getRegion"
+    override fun getMaximumLength(): Int {
+        return 5
+    }
 }

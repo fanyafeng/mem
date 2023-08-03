@@ -1,8 +1,9 @@
-package cn.edu.bjtu.gs.url
+package cn.edu.bjtu.gs.view.region
+
 
 /**
  * Author: fanyafeng
- * Data: 2023/7/24 15:36
+ * Data: 2023/8/2 19:43
  * Email: fanyafeng@live.cn
  * Description:
  *                                   _ooOoo_
@@ -37,14 +38,6 @@ package cn.edu.bjtu.gs.url
  *///Github See: https://github.com/fanyafeng
 
 
-object Urls {
-    const val BASE_URL = "http://106.75.240.243:8029"
+class RegionResponse {
 
-    const val URL_LOGIN = "/login"
-
-    const val URL_REGISTER = "/register"
-
-    const val URL_VERIFY = "/verify"
-
-    const val URL_REGION = "/system/user/profile/getRegion"
 }

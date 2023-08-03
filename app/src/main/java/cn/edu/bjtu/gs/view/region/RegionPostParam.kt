@@ -1,8 +1,14 @@
-package cn.edu.bjtu.gs.url
+package cn.edu.bjtu.gs.view.region
+
+import cn.edu.bjtu.gs.http.HttpRequestParamsImpl
+import cn.edu.bjtu.gs.url.Urls
+import com.ripple.http.base.HttpMethod
+import com.ripple.http.base.annotation.HttpRequest
+
 
 /**
  * Author: fanyafeng
- * Data: 2023/7/24 15:36
+ * Data: 2023/8/2 19:40
  * Email: fanyafeng@live.cn
  * Description:
  *                                   _ooOoo_
@@ -36,15 +42,8 @@ package cn.edu.bjtu.gs.url
  *                         不见满街漂亮妹，哪个归得程序员？
  *///Github See: https://github.com/fanyafeng
 
+@HttpRequest(Urls.URL_REGION)
+class RegionPostParam : HttpRequestParamsImpl() {
 
-object Urls {
-    const val BASE_URL = "http://106.75.240.243:8029"
-
-    const val URL_LOGIN = "/login"
-
-    const val URL_REGISTER = "/register"
-
-    const val URL_VERIFY = "/verify"
-
-    const val URL_REGION = "/system/user/profile/getRegion"
+    override var method: HttpMethod = HttpMethod.GET
 }

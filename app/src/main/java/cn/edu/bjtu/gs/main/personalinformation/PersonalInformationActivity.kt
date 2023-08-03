@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import cn.edu.bjtu.gs.databinding.ActivityPersonalInformationBinding
 import cn.edu.bjtu.gs.main.personalinformation.model.PlaceModel
 import cn.edu.bjtu.gs.view.picker.DatePicker
+import cn.edu.bjtu.gs.view.region.RegionPickerDialog
 import cn.edu.bjtu.gs.view.threeitempicker.IMultiItemPickerModel
 import cn.edu.bjtu.gs.view.threeitempicker.MultiItemPickerDialog
 import com.ripple.tool.extend.forEach
@@ -43,8 +44,9 @@ class PersonalInformationActivity : AppCompatActivity() {
                 list.add(PlaceModel("测试" + it))
             }
 
-            val dialog = MultiItemPickerDialog()
-            dialog.showPicker(this, list)
+            val dialog = RegionPickerDialog()
+            dialog.showPicker(this)
+
         }
     }
 

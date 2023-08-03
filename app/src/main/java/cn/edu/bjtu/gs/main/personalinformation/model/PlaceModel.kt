@@ -42,7 +42,7 @@ import cn.edu.bjtu.gs.view.threeitempicker.IMultiItemPickerModel
 
 
 class PlaceModel(val pickerTitle: String) : BaseModel, IMultiItemPickerModel {
-    override fun getTitle(): String {
+    override fun getShowTitle(): String {
         return pickerTitle
     }
 }

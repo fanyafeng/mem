@@ -2,6 +2,8 @@ package cn.edu.bjtu.gs.http
 
 import com.alibaba.fastjson.JSON
 import com.alibaba.fastjson.JSONObject
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.ripple.http.base.IHttpResponse
 import com.ripple.http.base.abs.AbsHttpResponseParser
 
