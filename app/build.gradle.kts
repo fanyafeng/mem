@@ -64,6 +64,7 @@ dependencies {
     implementation("com.google.protobuf:protobuf-java-util:4.0.0-rc-2")
     implementation("com.google.protobuf:protobuf-kotlin:3.21.6")
     implementation("com.google.protobuf.nano:protobuf-javanano:3.1.0")
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
 
     testImplementation("junit:junit:4.13.2")
 

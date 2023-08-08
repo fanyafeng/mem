@@ -64,6 +64,8 @@ class MainActivity : BaseActivity() {
                     0,
                     binding.homePageIcon,
                     binding.homePageTitle,
+                    R.drawable.home_page_select,
+                    R.drawable.home_page_unselect,
                     binding.homePageGroup
                 ).apply {
                     mainTabModelList = this@MainActivity.mainTabModelList
@@ -76,6 +78,8 @@ class MainActivity : BaseActivity() {
                     1,
                     binding.addressPageIcon,
                     binding.addressPageTitle,
+                    R.drawable.address_page_select,
+                    R.drawable.address_page_unselect,
                     binding.addressPageGroup
                 ).apply {
                     mainTabModelList = this@MainActivity.mainTabModelList
@@ -88,6 +92,8 @@ class MainActivity : BaseActivity() {
                     2,
                     binding.publishPageIcon,
                     binding.publishPageTitle,
+                    R.drawable.publish_page_select,
+                    R.drawable.publish_page_unselect,
                     binding.publishPageGroup
                 ).apply {
                     mainTabModelList = this@MainActivity.mainTabModelList
@@ -100,6 +106,8 @@ class MainActivity : BaseActivity() {
                     3,
                     binding.messagePageIcon,
                     binding.messagePageTitle,
+                    R.drawable.message_page_select,
+                    R.drawable.message_page_unselect,
                     binding.messagePageGroup
                 ).apply {
                     mainTabModelList = this@MainActivity.mainTabModelList
@@ -112,6 +120,8 @@ class MainActivity : BaseActivity() {
                     4,
                     binding.minePageIcon,
                     binding.minePageTitle,
+                    R.drawable.mine_page_select,
+                    R.drawable.mine_page_unselect,
                     binding.minePageGroup
                 ).apply {
                     mainTabModelList = this@MainActivity.mainTabModelList

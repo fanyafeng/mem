@@ -52,6 +52,8 @@ data class MainTabModel(
     var position: Int,
     var icon: ImageView,
     var title: TextView,
+    var selectId: Int,
+    var unSelectId: Int,
     val group: View
 ) {
 
@@ -85,9 +87,11 @@ data class MainTabModel(
 
     fun setChecked() {
         title.setTextColor(Color.BLUE)
+        icon.setImageResource(selectId)
     }
 
     fun setUnChecked() {
         title.setTextColor(Color.BLACK)
+        icon.setImageResource(unSelectId)
     }
 }
