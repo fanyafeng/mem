@@ -97,6 +97,8 @@ dependencies {
     implementation("androidx.datastore:datastore:1.0.0")
     implementation("androidx.datastore:datastore-preferences:1.0.0")
 
+    implementation("com.timehop.stickyheadersrecyclerview:library:0.4.3@aar")
+
 
     //android room
 //    val room_version = "2.4.2"

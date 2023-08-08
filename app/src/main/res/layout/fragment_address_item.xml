@@ -12,4 +12,25 @@
         android:gravity="center"
         android:text="测试" />
 
+    <cn.edu.bjtu.gs.view.quicksliderbar.QuickSideBarTipsView
+        android:id="@+id/quickSideBarTipsView"
+        android:layout_width="@dimen/height_quicksidebartips"
+        android:layout_height="match_parent"
+        app:layout_constraintRight_toLeftOf="@+id/quickSideBarView"
+        app:sidebarBackgroundColor="@color/material_dynamic_primary0"
+        app:sidebarTextColor="@android:color/white"
+        app:sidebarTextSize="@dimen/textSize_quicksidebartips" />
+
+    <cn.edu.bjtu.gs.view.quicksliderbar.QuickSideBarView
+        android:id="@id/quickSideBarView"
+        android:layout_width="20dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="45dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:sidebarItemHeight="@dimen/height_quicksidebaritem"
+        app:sidebarTextColor="@android:color/black"
+        app:sidebarTextColorChoose="@color/material_dynamic_primary0"
+        app:sidebarTextSize="@dimen/textSize_quicksidebar"
+        app:sidebarTextSizeChoose="@dimen/textSize_quicksidebar_choose" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
