@@ -74,8 +74,8 @@
 
     <ImageView
         android:id="@+id/homePageIcon"
-        android:layout_width="27dp"
-        android:layout_height="27dp"
+        android:layout_width="19dp"
+        android:layout_height="19dp"
         app:layout_constraintBottom_toTopOf="@+id/homePageTitle"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="@+id/guidelineOne"
@@ -87,6 +87,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:paddingTop="3dp"
         android:text="首页"
         android:textColor="@color/black"
         android:textSize="12dp"
@@ -106,8 +107,8 @@
 
     <ImageView
         android:id="@+id/addressPageIcon"
-        android:layout_width="27dp"
-        android:layout_height="27dp"
+        android:layout_width="19dp"
+        android:layout_height="19dp"
         app:layout_constraintBottom_toTopOf="@+id/addressPageTitle"
         app:layout_constraintLeft_toLeftOf="@+id/guidelineOne"
         app:layout_constraintRight_toRightOf="@+id/guidelineTwo"
@@ -119,6 +120,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:paddingTop="3dp"
         android:text="通讯录"
         android:textColor="@color/black"
         android:textSize="12dp"
@@ -138,8 +140,8 @@
 
     <ImageView
         android:id="@+id/publishPageIcon"
-        android:layout_width="27dp"
-        android:layout_height="27dp"
+        android:layout_width="19dp"
+        android:layout_height="19dp"
         app:layout_constraintBottom_toTopOf="@+id/publishPageTitle"
         app:layout_constraintLeft_toLeftOf="@+id/guidelineTwo"
         app:layout_constraintRight_toRightOf="@+id/guidelineThree"
@@ -151,6 +153,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:paddingTop="3dp"
         android:text="发布"
         android:textColor="@color/black"
         android:textSize="12dp"
@@ -170,8 +173,8 @@
 
     <ImageView
         android:id="@+id/messagePageIcon"
-        android:layout_width="27dp"
-        android:layout_height="27dp"
+        android:layout_width="19dp"
+        android:layout_height="19dp"
         app:layout_constraintBottom_toTopOf="@+id/messagePageTitle"
         app:layout_constraintLeft_toLeftOf="@+id/guidelineThree"
         app:layout_constraintRight_toRightOf="@+id/guidelineFour"
@@ -183,6 +186,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:paddingTop="3dp"
         android:text="消息"
         android:textColor="@color/black"
         android:textSize="12dp"
@@ -202,8 +206,8 @@
 
     <ImageView
         android:id="@+id/minePageIcon"
-        android:layout_width="27dp"
-        android:layout_height="27dp"
+        android:layout_width="19dp"
+        android:layout_height="19dp"
         app:layout_constraintBottom_toTopOf="@+id/minePageTitle"
         app:layout_constraintLeft_toLeftOf="@+id/guidelineFour"
         app:layout_constraintRight_toRightOf="parent"
@@ -215,6 +219,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:paddingTop="3dp"
         android:text="我的"
         android:textColor="@color/black"
         android:textSize="12dp"
