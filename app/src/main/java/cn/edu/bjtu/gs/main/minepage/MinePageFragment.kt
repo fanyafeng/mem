@@ -5,22 +5,30 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import cn.edu.bjtu.gs.R
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import cn.edu.bjtu.gs.databinding.FragmentMinePageBinding
+import cn.edu.bjtu.gs.main.minepage.viewholders.MinePageEmptyViewHolder
+import cn.edu.bjtu.gs.main.minepage.viewholders.MinePageTitleViewHolder
+import cn.edu.bjtu.gs.main.minepage.viewholders.MinePageTitleWithArrowViewHolder
+import cn.edu.bjtu.gs.main.minepage.viewholders.MinePageTopHeaderViewHolder
+import com.ripple.sdk.ui.recyclerview.multitypviewholder.factory.StrategyBaseIntBindingFactory
+import com.ripple.sdk.ui.recyclerview.multitypviewholder.linkmap.StrategyWithPriorityIntBindingLinkedMap
+import java.util.concurrent.ConcurrentHashMap
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [MinePageFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class MinePageFragment : Fragment() {
-    // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
+    private lateinit var viewModel: MinePageViewModel
+    private var binding: FragmentMinePageBinding? = null
+
+    private val adapter = MinePageAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,20 +42,54 @@ class MinePageFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_mine_page, container, false)
+        binding = FragmentMinePageBinding.inflate(inflater, container, false)
+        return binding?.root
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        viewModel = ViewModelProvider(this)[MinePageViewModel::class.java]
+
+        init()
+        initView()
+        initData()
+    }
+
+    private fun init() {
+        adapter.viewModel = viewModel
+        StrategyWithPriorityIntBindingLinkedMap<MinePageViewModel, MinePageModel>().apply {
+            register(MinePageEmptyViewHolder.Factory::class.java)
+            register(MinePageTopHeaderViewHolder.Factory::class.java)
+            register(MinePageTitleViewHolder.Factory::class.java)
+            register(MinePageTitleWithArrowViewHolder.Factory::class.java)
+        }
+    }
+
+    private fun initView() {
+        binding?.rvMinePage?.layoutManager = LinearLayoutManager(context)
+        binding?.rvMinePage?.adapter = adapter
+
+        val list = mutableListOf<MinePageModel>().apply {
+            add(MinePageModel(0))
+            add(MinePageModel(1))
+            add(MinePageModel(2))
+            add(MinePageModel(2))
+            add(MinePageModel(2))
+            add(MinePageModel(2))
+        }
+        adapter.submitList(list)
+    }
+
+    private fun initData() {
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        binding = null
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MinePageFragment.
-         */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             MinePageFragment().apply {
@@ -56,5 +98,9 @@ class MinePageFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+
+        val factoryBindingMapPool =
+            ConcurrentHashMap<Int, StrategyBaseIntBindingFactory<MinePageViewModel, MinePageModel>>()
+
     }
 }

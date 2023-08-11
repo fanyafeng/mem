@@ -59,6 +59,7 @@ dependencies {
     implementation("com.github.fanyafeng:ripple-tool:0.0.2")
     implementation("com.github.fanyafeng:ripple-task:0.0.4")
     implementation("com.github.fanyafeng:ripple-http:0.0.3")
+    implementation("com.github.fanyafeng:ripple-sdk:0.0.8")
 //    implementation(project(":ripple_http"))
     implementation("com.github.fanyafeng:ripple-dialog:0.0.2")
     implementation("com.google.protobuf:protobuf-java-util:4.0.0-rc-2")
