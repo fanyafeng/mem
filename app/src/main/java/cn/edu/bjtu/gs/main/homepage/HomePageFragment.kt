@@ -9,12 +9,19 @@ import android.view.ViewGroup
 import cn.edu.bjtu.gs.R
 import cn.edu.bjtu.gs.databinding.FragmentHomePageBinding
 import cn.edu.bjtu.gs.main.forgotpassword.ForgotPasswordActivity
+import cn.edu.bjtu.gs.main.homepage.api.HomePagePostParam
+import cn.edu.bjtu.gs.main.homepage.api.HomePageResponse
 import cn.edu.bjtu.gs.main.login.LoginActivity
+import cn.edu.bjtu.gs.main.minepage.MinePageModel
+import cn.edu.bjtu.gs.main.minepage.MinePageViewModel
 import cn.edu.bjtu.gs.main.personalinformation.PersonalInformationActivity
 import cn.edu.bjtu.gs.main.register.RegisterActivity
 import cn.edu.bjtu.gs.main.setpassword.SetPasswordActivity
 import cn.edu.bjtu.gs.main.splash.SplashActivity
 import cn.edu.bjtu.gs.main.verify.VerifyActivity
+import com.ripple.http.extend.httpPost
+import com.ripple.sdk.ui.recyclerview.multitypviewholder.factory.StrategyBaseIntBindingFactory
+import java.util.concurrent.ConcurrentHashMap
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,7 +34,6 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class HomePageFragment : Fragment() {
-    // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
 
@@ -42,39 +48,22 @@ class HomePageFragment : Fragment() {
     }
 
     private fun initView() {
-        binding?.test?.setOnClickListener {
-            startActivity(Intent(activity, LoginActivity::class.java))
-        }
-
-        binding?.register?.setOnClickListener {
-            startActivity(Intent(activity, RegisterActivity::class.java))
-        }
-
-        binding?.splash?.setOnClickListener {
-            startActivity(Intent(activity, SplashActivity::class.java))
-        }
-
-        binding?.verify?.setOnClickListener {
-            startActivity(Intent(activity, VerifyActivity::class.java))
-        }
-
-        binding?.personalInformation?.setOnClickListener {
-            startActivity(Intent(activity, PersonalInformationActivity::class.java))
-        }
-
-        binding?.forgotPassword?.setOnClickListener {
-            startActivity(Intent(activity, ForgotPasswordActivity::class.java))
-        }
-
-        binding?.setPassword?.setOnClickListener {
-            startActivity(Intent(activity, SetPasswordActivity::class.java))
-        }
-
 
     }
 
     private fun initData() {
-
+//        httpPost {
+//            val fromParam=HomePagePostParam()
+//            params = fromParam
+//
+//            onSuccess<HomePageResponse> {
+//
+//            }
+//
+//            onFailed {
+//
+//            }
+//        }
     }
 
     override fun onCreateView(
@@ -92,15 +81,6 @@ class HomePageFragment : Fragment() {
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HomePageFragment.
-         */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             HomePageFragment().apply {
@@ -109,6 +89,9 @@ class HomePageFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+
+        val factoryBindingMapPool =
+            ConcurrentHashMap<Int, StrategyBaseIntBindingFactory<HomePageViewModel, HomePageModel>>()
     }
 
     override fun onDestroyView() {

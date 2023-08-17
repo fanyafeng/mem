@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,46 +7,11 @@
     android:orientation="vertical"
     tools:context=".main.homepage.HomePageFragment">
 
-    <Button
-        android:id="@+id/test"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/homePageRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="登录" />
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical" />
 
-    <Button
-        android:id="@+id/register"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="注册" />
-
-    <Button
-        android:id="@+id/splash"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="闪屏" />
-
-    <Button
-        android:id="@+id/verify"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="身份验证" />
-
-    <Button
-        android:id="@+id/personalInformation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="补充个人信息" />
-
-    <Button
-        android:id="@+id/forgotPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="忘记密码" />
-
-    <Button
-        android:id="@+id/setPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="设置密码" />
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

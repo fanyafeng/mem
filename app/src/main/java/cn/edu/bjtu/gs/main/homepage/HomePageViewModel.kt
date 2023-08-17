@@ -1,5 +1,7 @@
 package cn.edu.bjtu.gs.main.homepage
 
+import androidx.lifecycle.ViewModel
+
 
 /**
  * Author: fanyafeng
@@ -38,5 +40,5 @@ package cn.edu.bjtu.gs.main.homepage
  *///Github See: https://github.com/fanyafeng
 
 
-class HomePageViewModel {
+class HomePageViewModel : ViewModel() {
 }

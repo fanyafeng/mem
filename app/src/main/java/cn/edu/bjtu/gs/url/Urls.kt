@@ -47,4 +47,6 @@ object Urls {
     const val URL_VERIFY = "/verify"
 
     const val URL_REGION = "/system/user/profile/getRegion"
+
+    const val URL_BULLETIN_LIST = "/bulletin/list"
 }
