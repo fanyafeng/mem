@@ -12,17 +12,31 @@ import cn.edu.bjtu.gs.BaseModel
 
 class MinePageModel(private val type: Int) : BaseModel {
 
+    var title: String? = null
+    var subTitle: String? = null
+    var clazz: Class<*>? = null
+
+    fun getType(): Int {
+        return type
+    }
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
-        if (javaClass != other?.javaClass) return false
+        if (other !is MinePageModel) return false
+
+        if (type != other.type) return false
+        if (title != other.title) return false
+        if (subTitle != other.subTitle) return false
+        if (clazz != other.clazz) return false
+
         return true
     }
 
     override fun hashCode(): Int {
-        return javaClass.hashCode()
-    }
-
-    fun getType(): Int {
-        return type
+        var result = type
+        result = 31 * result + (title?.hashCode() ?: 0)
+        result = 31 * result + (subTitle?.hashCode() ?: 0)
+        result = 31 * result + (clazz?.hashCode() ?: 0)
+        return result
     }
 }

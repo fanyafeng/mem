@@ -72,10 +72,18 @@ class MinePageFragment : Fragment() {
         val list = mutableListOf<MinePageModel>().apply {
             add(MinePageModel(0))
             add(MinePageModel(1))
-            add(MinePageModel(2))
-            add(MinePageModel(2))
-            add(MinePageModel(2))
-            add(MinePageModel(2))
+            add(MinePageModel(2).apply {
+                title = "修改手机号"
+            })
+            add(MinePageModel(2).apply {
+                title = "修改密码"
+            })
+            add(MinePageModel(2).apply {
+                title = "退出登录"
+            })
+            add(MinePageModel(2).apply {
+                title = "注销账户"
+            })
         }
         adapter.submitList(list)
     }
