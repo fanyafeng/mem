@@ -7,11 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import cn.edu.bjtu.gs.BaseActivity
 import cn.edu.bjtu.gs.databinding.FragmentMinePageBinding
 import cn.edu.bjtu.gs.main.minepage.viewholders.MinePageEmptyViewHolder
 import cn.edu.bjtu.gs.main.minepage.viewholders.MinePageTitleViewHolder
 import cn.edu.bjtu.gs.main.minepage.viewholders.MinePageTitleWithArrowViewHolder
 import cn.edu.bjtu.gs.main.minepage.viewholders.MinePageTopHeaderViewHolder
+import cn.edu.bjtu.gs.main.register.RegisterActivity
 import com.ripple.sdk.ui.recyclerview.multitypviewholder.factory.StrategyBaseIntBindingFactory
 import com.ripple.sdk.ui.recyclerview.multitypviewholder.linkmap.StrategyWithPriorityIntBindingLinkedMap
 import java.util.concurrent.ConcurrentHashMap
@@ -71,19 +73,57 @@ class MinePageFragment : Fragment() {
 
         val list = mutableListOf<MinePageModel>().apply {
             add(MinePageModel(0))
-            add(MinePageModel(1))
-            add(MinePageModel(2).apply {
-                title = "修改手机号"
+            add(MinePageModel(1).apply {
+                title = "通用类"
             })
             add(MinePageModel(2).apply {
-                title = "修改密码"
+                title = "入校申请"
+                clazz = RegisterActivity::class.java
             })
             add(MinePageModel(2).apply {
-                title = "退出登录"
+                title = "会议室预约"
+            })
+            add(MinePageModel(1).apply {
+                title = "办公类"
             })
             add(MinePageModel(2).apply {
-                title = "注销账户"
+                title = "档案管理"
             })
+            add(MinePageModel(2).apply {
+                title = "图书馆服务"
+            })
+            add(MinePageModel(1).apply {
+                title = "生活类"
+            })
+            add(MinePageModel(2).apply {
+                title = "文创商店"
+            })
+            add(MinePageModel(2).apply {
+                title = "体育馆预订"
+            })
+            add(MinePageModel(2).apply {
+                title = "餐饮预订"
+            })
+            add(MinePageModel(2).apply {
+                title = "校内酒店预约"
+            })
+            if ((activity as BaseActivity).isLogin()) {
+                add(MinePageModel(1).apply {
+                    title = "通用设置"
+                })
+                add(MinePageModel(2).apply {
+                    title = "修改手机号"
+                })
+                add(MinePageModel(2).apply {
+                    title = "修改密码"
+                })
+                add(MinePageModel(2).apply {
+                    title = "退出登录"
+                })
+                add(MinePageModel(2).apply {
+                    title = "注销账户"
+                })
+            }
         }
         adapter.submitList(list)
     }

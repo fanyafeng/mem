@@ -23,8 +23,7 @@ class MinePageTitleViewHolder(val binding: MinePageTitleLayoutBinding) :
         position: Int
     ) {
         super.bindData(viewModel, dataSource, position)
-
-
+        binding.tvTitle.text = dataSource?.title ?: ""
     }
 
     @ViewHolderIntAnnotation(TOP_TITLE)

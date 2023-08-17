@@ -3,8 +3,10 @@ package cn.edu.bjtu.gs.main.setpassword
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import cn.edu.bjtu.gs.R
+import cn.edu.bjtu.gs.annon.ActivityAnnotation
 import cn.edu.bjtu.gs.databinding.ActivitySetPasswordBinding
 
+@ActivityAnnotation(true)
 class SetPasswordActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySetPasswordBinding

@@ -10,6 +10,7 @@ import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import cn.edu.bjtu.gs.BaseActivity
 import cn.edu.bjtu.gs.R
+import cn.edu.bjtu.gs.annon.ActivityAnnotation
 import cn.edu.bjtu.gs.databinding.ActivityLoginBinding
 import cn.edu.bjtu.gs.main.login.api.LoginPostParam
 import cn.edu.bjtu.gs.main.login.api.LoginResponse
@@ -18,6 +19,7 @@ import com.ripple.dialog.extend.showToast
 import com.ripple.http.extend.httpPost
 import kotlinx.coroutines.launch
 
+@ActivityAnnotation(false)
 class LoginActivity : BaseActivity() {
 
     private lateinit var binding: ActivityLoginBinding

@@ -5,6 +5,7 @@ import cn.edu.bjtu.gs.databinding.MinePageTitleWithArrowLayoutBinding
 import cn.edu.bjtu.gs.databinding.MinePageTopHeaderLayoutBinding
 import cn.edu.bjtu.gs.main.minepage.MinePageModel
 import cn.edu.bjtu.gs.main.minepage.MinePageViewModel
+import com.ripple.dialog.extend.showToast
 import com.ripple.sdk.ui.recyclerview.multitypviewholder.annotation.ViewHolderIntAnnotation
 
 /**
@@ -33,7 +34,12 @@ class MinePageTitleWithArrowViewHolder(val binding: MinePageTitleWithArrowLayout
             }
             binding.root.setOnClickListener { _ ->
                 mContext?.let { context ->
-                    if (it.clazz == null) return@setOnClickListener
+                    if (it.clazz == null) {
+                        context.showToast(
+                            "暂未开放"
+                        )
+                        return@setOnClickListener
+                    }
                     context.startActivity(Intent(context, it.clazz))
                 }
             }
