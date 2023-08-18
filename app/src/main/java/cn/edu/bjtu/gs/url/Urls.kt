@@ -49,4 +49,6 @@ object Urls {
     const val URL_REGION = "/system/user/profile/getRegion"
 
     const val URL_BULLETIN_LIST = "/bulletin/list"
+
+    const val URL_SEND_PHONE_CODE = "/getSmsCode"
 }

@@ -53,6 +53,17 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registerTitle" />
 
+    <TextView
+        android:id="@+id/sendPhoneCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="16dp"
+        android:text="发送验证码"
+        android:textColor="#0052d9"
+        app:layout_constraintBottom_toBottomOf="@+id/phoneNumInput"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/phoneNumInput" />
+
     <View
         android:id="@+id/oneLine"
         android:layout_width="0dp"
@@ -176,7 +187,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="49dp"
         android:layout_marginRight="16dp"
-        android:background="#bbd3fb"
+        android:background="#0052d9"
         android:gravity="center"
         android:text="下一步"
         android:textColor="@color/white"

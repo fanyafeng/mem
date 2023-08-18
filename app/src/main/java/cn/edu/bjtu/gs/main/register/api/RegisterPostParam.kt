@@ -44,6 +44,9 @@ import com.ripple.http.base.annotation.HttpRequest
 
 @HttpRequest(Urls.URL_REGISTER)
 class RegisterPostParam : HttpRequestParamsImpl() {
+    var code: String = ""
+    var uuid: String = ""
     var username = ""
     var password = ""
+    var personId: Int = 1
 }
