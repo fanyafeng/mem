@@ -1,11 +1,9 @@
 package cn.edu.bjtu.gs.main.register
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import cn.edu.bjtu.gs.BaseActivity
-import cn.edu.bjtu.gs.R
-import cn.edu.bjtu.gs.annon.ActivityAnnotation
+import cn.edu.bjtu.gs.annon.UserStatusSettingAnnotation
 import cn.edu.bjtu.gs.databinding.ActivityRegisterBinding
 import cn.edu.bjtu.gs.main.login.LoginActivity
 import cn.edu.bjtu.gs.main.register.api.RegisterPostParam
@@ -17,7 +15,7 @@ import com.ripple.http.extend.httpGet
 import com.ripple.http.extend.httpPost
 
 
-@ActivityAnnotation(false)
+@UserStatusSettingAnnotation(false)
 class RegisterActivity : BaseActivity() {
     private lateinit var binding: ActivityRegisterBinding
     private var uuid: String = ""
@@ -39,6 +37,10 @@ class RegisterActivity : BaseActivity() {
 
         binding.register.setOnClickListener {
             registerUser()
+        }
+
+        binding.backIcon.setOnClickListener {
+            finish()
         }
     }
 

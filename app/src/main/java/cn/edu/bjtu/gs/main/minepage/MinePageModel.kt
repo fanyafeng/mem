@@ -15,6 +15,7 @@ class MinePageModel(private val type: Int) : BaseModel {
     var title: String? = null
     var subTitle: String? = null
     var clazz: Class<*>? = null
+    var methodLambda: (() -> Unit)? = null
 
     fun getType(): Int {
         return type

@@ -41,4 +41,6 @@ import androidx.lifecycle.ViewModel
 
 
 class MinePageViewModel : ViewModel() {
+
+    var isLogin = false
 }

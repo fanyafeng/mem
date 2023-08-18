@@ -9,11 +9,17 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import cn.edu.bjtu.gs.BaseActivity
 import cn.edu.bjtu.gs.databinding.FragmentMinePageBinding
+import cn.edu.bjtu.gs.main.BaseFragment
+import cn.edu.bjtu.gs.main.login.LoginActivity
+import cn.edu.bjtu.gs.main.minepage.api.LogoutPostParam
+import cn.edu.bjtu.gs.main.minepage.api.LogoutResponse
 import cn.edu.bjtu.gs.main.minepage.viewholders.MinePageEmptyViewHolder
 import cn.edu.bjtu.gs.main.minepage.viewholders.MinePageTitleViewHolder
 import cn.edu.bjtu.gs.main.minepage.viewholders.MinePageTitleWithArrowViewHolder
 import cn.edu.bjtu.gs.main.minepage.viewholders.MinePageTopHeaderViewHolder
 import cn.edu.bjtu.gs.main.register.RegisterActivity
+import com.ripple.dialog.extend.showToast
+import com.ripple.http.extend.httpPost
 import com.ripple.sdk.ui.recyclerview.multitypviewholder.factory.StrategyBaseIntBindingFactory
 import com.ripple.sdk.ui.recyclerview.multitypviewholder.linkmap.StrategyWithPriorityIntBindingLinkedMap
 import java.util.concurrent.ConcurrentHashMap
@@ -23,7 +29,7 @@ import java.util.concurrent.ConcurrentHashMap
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class MinePageFragment : Fragment() {
+class MinePageFragment : BaseFragment() {
     private var param1: String? = null
     private var param2: String? = null
 
@@ -59,6 +65,7 @@ class MinePageFragment : Fragment() {
 
     private fun init() {
         adapter.viewModel = viewModel
+        viewModel.isLogin = (this.activity as BaseActivity).isLogin()
         StrategyWithPriorityIntBindingLinkedMap<MinePageViewModel, MinePageModel>().apply {
             register(MinePageEmptyViewHolder.Factory::class.java)
             register(MinePageTopHeaderViewHolder.Factory::class.java)
@@ -78,7 +85,6 @@ class MinePageFragment : Fragment() {
             })
             add(MinePageModel(2).apply {
                 title = "入校申请"
-                clazz = RegisterActivity::class.java
             })
             add(MinePageModel(2).apply {
                 title = "会议室预约"
@@ -119,6 +125,18 @@ class MinePageFragment : Fragment() {
                 })
                 add(MinePageModel(2).apply {
                     title = "退出登录"
+                    methodLambda = {
+                        httpPost {
+                            val fromParam = LogoutPostParam()
+                            onSuccess<LogoutResponse> {
+                                activity?.showToast("注销成功")
+                            }
+
+                            onFailed {
+                                activity?.showToast(it.message ?: "未知错误")
+                            }
+                        }
+                    }
                 })
                 add(MinePageModel(2).apply {
                     title = "注销账户"
@@ -131,6 +149,7 @@ class MinePageFragment : Fragment() {
     private fun initData() {
 
     }
+
 
     override fun onDestroy() {
         super.onDestroy()

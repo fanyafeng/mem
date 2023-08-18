@@ -12,7 +12,7 @@
         android:layout_height="70dp"
         android:layout_marginLeft="25dp"
         android:layout_marginTop="50dp"
-        android:background="@color/black"
+        android:src="@drawable/mine_page_icon"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -22,22 +22,32 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
-        android:text="姓名"
+        android:text="点击登录"
         android:textColor="@color/white"
         android:textSize="22dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvNumber"
         app:layout_constraintLeft_toRightOf="@+id/ivIcon"
-        app:layout_constraintTop_toTopOf="@+id/ivIcon" />
+        app:layout_constraintTop_toTopOf="@+id/ivIcon"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
         android:id="@+id/tvNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
-        android:text="小红果号： 123456"
+        android:text="登录后查看更多信息"
         android:textColor="@color/white"
         android:textSize="12dp"
         app:layout_constraintBottom_toBottomOf="@+id/ivIcon"
-        app:layout_constraintLeft_toRightOf="@+id/ivIcon" />
+        app:layout_constraintLeft_toRightOf="@+id/ivIcon"
+        app:layout_constraintTop_toBottomOf="@+id/tvName"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/loginGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="ivIcon,tvName,tvNumber" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/tagList"
@@ -55,7 +65,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:paddingBottom="30dp"
-        android:text="这人很懒，什么都没有留下"
+        android:text="登录后查看"
         android:textColor="@color/white"
         android:textSize="14dp"
         app:layout_constraintLeft_toLeftOf="@+id/ivIcon"

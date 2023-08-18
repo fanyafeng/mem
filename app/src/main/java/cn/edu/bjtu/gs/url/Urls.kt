@@ -51,4 +51,8 @@ object Urls {
     const val URL_BULLETIN_LIST = "/bulletin/list"
 
     const val URL_SEND_PHONE_CODE = "/getSmsCode"
+
+    const val URL_FORGOT_PASSWORD = "/phoneVerify"
+
+    const val URL_LOGOUT = "/logout"
 }

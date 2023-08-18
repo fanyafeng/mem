@@ -34,10 +34,21 @@ class MinePageTitleWithArrowViewHolder(val binding: MinePageTitleWithArrowLayout
             }
             binding.root.setOnClickListener { _ ->
                 mContext?.let { context ->
+                    if (it.methodLambda != null) {
+                        it.methodLambda?.invoke()
+                        return@setOnClickListener
+                    }
+
                     if (it.clazz == null) {
-                        context.showToast(
-                            "暂未开放"
-                        )
+                        if (viewModel?.isLogin == true) {
+                            context.showToast(
+                                "暂未开放"
+                            )
+                        } else {
+                            context.showToast(
+                                "请先登录"
+                            )
+                        }
                         return@setOnClickListener
                     }
                     context.startActivity(Intent(context, it.clazz))

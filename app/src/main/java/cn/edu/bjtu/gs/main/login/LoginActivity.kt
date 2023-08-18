@@ -2,16 +2,15 @@ package cn.edu.bjtu.gs.main.login
 
 import android.content.Intent
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import cn.edu.bjtu.gs.BaseActivity
-import cn.edu.bjtu.gs.R
-import cn.edu.bjtu.gs.annon.ActivityAnnotation
+import cn.edu.bjtu.gs.annon.UserStatusSettingAnnotation
 import cn.edu.bjtu.gs.databinding.ActivityLoginBinding
+import cn.edu.bjtu.gs.main.forgotpassword.ForgotPasswordActivity
 import cn.edu.bjtu.gs.main.login.api.LoginPostParam
 import cn.edu.bjtu.gs.main.login.api.LoginResponse
 import cn.edu.bjtu.gs.main.register.RegisterActivity
@@ -19,13 +18,11 @@ import com.ripple.dialog.extend.showToast
 import com.ripple.http.extend.httpPost
 import kotlinx.coroutines.launch
 
-@ActivityAnnotation(false)
+@UserStatusSettingAnnotation(false)
 class LoginActivity : BaseActivity() {
 
     private lateinit var binding: ActivityLoginBinding
-
     private val viewModel: LoginViewModel by viewModels()
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,6 +77,10 @@ class LoginActivity : BaseActivity() {
             }
 
         })
+
+        binding.forgotPassword.setOnClickListener {
+            startActivity(Intent(this, ForgotPasswordActivity::class.java))
+        }
 
     }
 

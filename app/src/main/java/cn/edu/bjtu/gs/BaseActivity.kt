@@ -3,18 +3,20 @@ package cn.edu.bjtu.gs
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.PersistableBundle
-import cn.edu.bjtu.gs.annon.ActivityAnnotation
+import cn.edu.bjtu.gs.annon.UserStatusSettingAnnotation
 import cn.edu.bjtu.gs.cache.CacheDatabase
 import cn.edu.bjtu.gs.http.HttpParamsBuilderImpl
 import cn.edu.bjtu.gs.main.login.LoginActivity
+import com.ripple.dialog.custom.LoadingSimpleDialog
 import kotlinx.coroutines.runBlocking
 
 open class BaseActivity : AppCompatActivity() {
 
+    private var loadingDialog: LoadingSimpleDialog? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        this.javaClass.getAnnotation(ActivityAnnotation::class.java)?.let {
+        this.javaClass.getAnnotation(UserStatusSettingAnnotation::class.java)?.let {
             if (it.value) {
                 runBlocking {
                     App.application?.let { application ->
@@ -38,5 +40,16 @@ open class BaseActivity : AppCompatActivity() {
         } else {
             false
         }
+    }
+
+    fun showLoadingDialog() {
+        if (loadingDialog == null) {
+            loadingDialog = LoadingSimpleDialog(this)
+            loadingDialog?.show()
+        }
+    }
+
+    fun dismissLoadingDialog() {
+        loadingDialog?.dismiss()
     }
 }

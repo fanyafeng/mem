@@ -8,6 +8,6 @@ package cn.edu.bjtu.gs.annon
  *///Github See: https://github.com/fanyafeng
 
 
-annotation class ActivityAnnotation(
+annotation class UserStatusSettingAnnotation(
     val value: Boolean
 )
