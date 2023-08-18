@@ -1,5 +1,7 @@
 package cn.edu.bjtu.gs.main.messagepage
 
+import androidx.lifecycle.ViewModel
+
 
 /**
  * Author: fanyafeng
@@ -38,5 +40,5 @@ package cn.edu.bjtu.gs.main.messagepage
  *///Github See: https://github.com/fanyafeng
 
 
-class MessagePageViewModel {
+class MessagePageViewModel : ViewModel() {
 }
