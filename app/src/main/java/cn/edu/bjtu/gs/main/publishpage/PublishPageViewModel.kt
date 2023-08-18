@@ -1,5 +1,7 @@
 package cn.edu.bjtu.gs.main.publishpage
 
+import androidx.lifecycle.ViewModel
+
 
 /**
  * Author: fanyafeng
@@ -38,5 +40,5 @@ package cn.edu.bjtu.gs.main.publishpage
  *///Github See: https://github.com/fanyafeng
 
 
-class PublishPageViewModel {
+class PublishPageViewModel : ViewModel() {
 }

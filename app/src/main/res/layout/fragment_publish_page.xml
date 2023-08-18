@@ -1,15 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="#99000000"
     tools:context=".main.publishpage.PublishPageFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="publish" />
+    <View
+        android:id="@+id/bottomBackground"
+        android:layout_width="0dp"
+        android:layout_height="73dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
-</FrameLayout>
+    <ImageView
+        android:id="@+id/leftIcon"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginLeft="24dp"
+        android:src="@drawable/publish_left_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/bottomBackground"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/bottomBackground" />
+
+    <TextView
+        android:id="@+id/leftTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:text="发布活动"
+        android:textColor="@color/black"
+        android:textSize="14dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/leftDescription"
+        app:layout_constraintLeft_toRightOf="@+id/leftIcon"
+        app:layout_constraintTop_toTopOf="@+id/bottomBackground"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/leftDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:text="活动、运动、学术"
+        android:textColor="#66000000"
+        android:textSize="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/bottomBackground"
+        app:layout_constraintLeft_toRightOf="@+id/leftIcon"
+        app:layout_constraintTop_toBottomOf="@+id/leftTitle"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <ImageView
+        android:id="@+id/rightIcon"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginLeft="24dp"
+        android:src="@drawable/publish_right_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/bottomBackground"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="@+id/bottomBackground" />
+
+    <TextView
+        android:id="@+id/rightTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:text="发布需求"
+        android:textColor="@color/black"
+        android:textSize="14dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/rightDescription"
+        app:layout_constraintLeft_toRightOf="@+id/rightIcon"
+        app:layout_constraintTop_toTopOf="@+id/bottomBackground"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/rightDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:text="招聘、合作、培训"
+        android:textColor="#66000000"
+        android:textSize="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/bottomBackground"
+        app:layout_constraintLeft_toRightOf="@+id/rightIcon"
+        app:layout_constraintTop_toBottomOf="@+id/rightTitle"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
