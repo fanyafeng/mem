@@ -10,13 +10,18 @@ import androidx.lifecycle.lifecycleScope
 import cn.edu.bjtu.gs.BaseActivity
 import cn.edu.bjtu.gs.annon.UserStatusSettingAnnotation
 import cn.edu.bjtu.gs.databinding.ActivityLoginBinding
+import cn.edu.bjtu.gs.event.LoginEvent
 import cn.edu.bjtu.gs.main.forgotpassword.ForgotPasswordActivity
 import cn.edu.bjtu.gs.main.login.api.LoginPostParam
 import cn.edu.bjtu.gs.main.login.api.LoginResponse
 import cn.edu.bjtu.gs.main.register.RegisterActivity
 import com.ripple.dialog.extend.showToast
 import com.ripple.http.extend.httpPost
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import org.greenrobot.eventbus.EventBus
 
 @UserStatusSettingAnnotation(false)
 class LoginActivity : BaseActivity() {
@@ -96,17 +101,31 @@ class LoginActivity : BaseActivity() {
                     fromParams.password = binding.loginPasswordInput.text.toString()
                     params = fromParams
 
+                    onStart {
+                        showLoadingDialog()
+                    }
+
                     onSuccess<LoginResponse> {
                         it.token?.let { token ->
                             lifecycleScope.launch {
                                 viewModel.saveToken(this@LoginActivity, token)
+                                launch(Dispatchers.Main) {
+                                    delay(300)
+                                    dismissLoadingDialog()
+                                    showToast("登录成功")
+                                    EventBus.getDefault().post(LoginEvent())
+                                    finish()
+                                }
                             }
-                            showToast("登录成功")
                         }
                     }
 
                     onFailed {
                         showToast(it.message ?: "")
+                    }
+
+                    onFinish {
+
                     }
                 }
             }

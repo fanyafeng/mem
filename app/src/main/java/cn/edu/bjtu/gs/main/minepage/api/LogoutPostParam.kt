@@ -13,5 +13,5 @@ import com.ripple.http.base.annotation.HttpRequest
 
 @HttpRequest(Urls.URL_LOGOUT)
 class LogoutPostParam : HttpRequestParamsImpl() {
-
+    var token: String = ""
 }

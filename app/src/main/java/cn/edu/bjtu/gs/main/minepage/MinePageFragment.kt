@@ -9,6 +9,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import cn.edu.bjtu.gs.BaseActivity
 import cn.edu.bjtu.gs.databinding.FragmentMinePageBinding
+import cn.edu.bjtu.gs.event.LoginEvent
+import cn.edu.bjtu.gs.event.LogoutEvent
 import cn.edu.bjtu.gs.main.BaseFragment
 import cn.edu.bjtu.gs.main.login.LoginActivity
 import cn.edu.bjtu.gs.main.minepage.api.LogoutPostParam
@@ -22,6 +24,9 @@ import com.ripple.dialog.extend.showToast
 import com.ripple.http.extend.httpPost
 import com.ripple.sdk.ui.recyclerview.multitypviewholder.factory.StrategyBaseIntBindingFactory
 import com.ripple.sdk.ui.recyclerview.multitypviewholder.linkmap.StrategyWithPriorityIntBindingLinkedMap
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 import java.util.concurrent.ConcurrentHashMap
 
 // TODO: Rename parameter arguments, choose names that match
@@ -40,10 +45,28 @@ class MinePageFragment : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        EventBus.getDefault().register(this)
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        EventBus.getDefault().unregister(this)
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onEvent(event: LogoutEvent) {
+        viewModel.isLogin = false
+        initView()
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onEvent(event: LoginEvent) {
+        viewModel.isLogin = true
+        initView()
     }
 
     override fun onCreateView(
@@ -128,12 +151,23 @@ class MinePageFragment : BaseFragment() {
                     methodLambda = {
                         httpPost {
                             val fromParam = LogoutPostParam()
+                            params = fromParam
+                            onStart {
+                                showLoadingDialog()
+                            }
+
                             onSuccess<LogoutResponse> {
                                 activity?.showToast("注销成功")
+                                logout()
                             }
 
                             onFailed {
                                 activity?.showToast(it.message ?: "未知错误")
+                            }
+
+                            onFinish {
+                                dismissLoadingDialog()
+                                logout()
                             }
                         }
                     }

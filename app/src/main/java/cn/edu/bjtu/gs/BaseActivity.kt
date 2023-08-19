@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import cn.edu.bjtu.gs.annon.UserStatusSettingAnnotation
 import cn.edu.bjtu.gs.cache.CacheDatabase
+import cn.edu.bjtu.gs.event.LogoutEvent
 import cn.edu.bjtu.gs.http.HttpParamsBuilderImpl
 import cn.edu.bjtu.gs.main.login.LoginActivity
 import com.ripple.dialog.custom.LoadingSimpleDialog
 import kotlinx.coroutines.runBlocking
+import org.greenrobot.eventbus.EventBus
 
 open class BaseActivity : AppCompatActivity() {
 
@@ -40,6 +42,16 @@ open class BaseActivity : AppCompatActivity() {
         } else {
             false
         }
+    }
+
+    fun logout() {
+        runBlocking {
+            if (App.application != null) {
+                val dao = CacheDatabase.getDatabase(application).cacheDao()
+                dao.deleteItemByKey(HttpParamsBuilderImpl.TOKEN)
+            }
+        }
+        EventBus.getDefault().post(LogoutEvent())
     }
 
     fun showLoadingDialog() {
