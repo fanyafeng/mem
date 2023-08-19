@@ -22,9 +22,7 @@ class NotificationActivity : BaseActivity() {
         binding = ActivityNotifacationBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initView()
-        Handler().postDelayed({
-            initData()
-        },200)
+        initData()
     }
 
     private fun initView() {

@@ -167,7 +167,6 @@ class MinePageFragment : BaseFragment() {
 
                             onFinish {
                                 dismissLoadingDialog()
-                                logout()
                             }
                         }
                     }
