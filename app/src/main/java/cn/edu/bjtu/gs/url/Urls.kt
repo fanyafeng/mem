@@ -55,4 +55,6 @@ object Urls {
     const val URL_FORGOT_PASSWORD = "/phoneVerify"
 
     const val URL_LOGOUT = "/logout"
+
+    const val URL_INFO_LIST="/info/list"
 }

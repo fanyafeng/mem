@@ -1,8 +1,10 @@
 package cn.edu.bjtu.gs.main.messagepage.viewholders
 
+import android.content.Intent
 import cn.edu.bjtu.gs.databinding.ItemMessagePageTopLayoutBinding
 import cn.edu.bjtu.gs.main.messagepage.MessagePageModel
 import cn.edu.bjtu.gs.main.messagepage.MessagePageViewModel
+import cn.edu.bjtu.gs.main.notification.NotificationActivity
 import com.ripple.sdk.ui.recyclerview.multitypviewholder.annotation.ViewHolderIntAnnotation
 
 /**
@@ -21,6 +23,9 @@ class MessagePageTopViewHolder(val binding: ItemMessagePageTopLayoutBinding) :
         position: Int
     ) {
         super.bindData(viewModel, dataSource, position)
+        binding.ivNotification.setOnClickListener {
+            mContext?.startActivity(Intent(mContext, NotificationActivity::class.java))
+        }
     }
 
     @ViewHolderIntAnnotation(TOP_HEADER)

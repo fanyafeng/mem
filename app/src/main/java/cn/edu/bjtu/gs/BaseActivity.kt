@@ -55,9 +55,11 @@ open class BaseActivity : AppCompatActivity() {
     }
 
     fun showLoadingDialog() {
-        if (loadingDialog == null) {
-            loadingDialog = LoadingSimpleDialog(this)
-            loadingDialog?.show()
+        runOnUiThread {
+            if (loadingDialog == null) {
+                loadingDialog = LoadingSimpleDialog(this)
+                loadingDialog?.show()
+            }
         }
     }
 

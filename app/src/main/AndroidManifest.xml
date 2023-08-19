@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Mem"
         tools:targetApi="31">
         <activity
+            android:name=".main.notification.NotificationActivity"
+            android:exported="false" />
+        <activity
             android:name=".main.taglistpage.TagListActivity"
             android:exported="false" />
         <activity
