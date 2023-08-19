@@ -1,5 +1,6 @@
 package cn.edu.bjtu.gs.main.publishpage
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +9,8 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import cn.edu.bjtu.gs.R
 import cn.edu.bjtu.gs.databinding.FragmentPublishPageBinding
+import cn.edu.bjtu.gs.main.publishactivity.PublishActivity
+import cn.edu.bjtu.gs.main.publishrequirement.PublishRequirementActivity
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -49,7 +52,13 @@ class PublishPageFragment : Fragment() {
     }
 
     private fun initView() {
+        binding?.leftButton?.setOnClickListener {
+            startActivity(Intent(context, PublishActivity::class.java))
+        }
 
+        binding?.rightButton?.setOnClickListener {
+            startActivity(Intent(context, PublishRequirementActivity::class.java))
+        }
     }
 
     private fun initData() {
