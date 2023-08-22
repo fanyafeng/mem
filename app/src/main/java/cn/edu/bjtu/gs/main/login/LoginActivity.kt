@@ -14,6 +14,7 @@ import cn.edu.bjtu.gs.event.LoginEvent
 import cn.edu.bjtu.gs.main.forgotpassword.ForgotPasswordActivity
 import cn.edu.bjtu.gs.main.login.api.LoginPostParam
 import cn.edu.bjtu.gs.main.login.api.LoginResponse
+import cn.edu.bjtu.gs.main.login.manager.UserInfoManager
 import cn.edu.bjtu.gs.main.register.RegisterActivity
 import com.ripple.dialog.extend.showToast
 import com.ripple.http.extend.httpPost
@@ -109,7 +110,9 @@ class LoginActivity : BaseActivity() {
                         it.token?.let { token ->
                             lifecycleScope.launch {
                                 viewModel.saveToken(this@LoginActivity, token)
+                                viewModel.saveUserInfo(this@LoginActivity, it.userInfo)
                                 launch(Dispatchers.Main) {
+                                    UserInfoManager.getInstance().userInfo = it.userInfo
                                     delay(300)
                                     dismissLoadingDialog()
                                     showToast("登录成功")

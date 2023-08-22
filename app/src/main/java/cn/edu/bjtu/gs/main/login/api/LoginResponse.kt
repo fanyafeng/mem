@@ -1,5 +1,7 @@
 package cn.edu.bjtu.gs.main.login.api
 
+import cn.edu.bjtu.gs.main.login.model.UserInfoModel
+
 
 /**
  * Author: fanyafeng
@@ -40,4 +42,5 @@ package cn.edu.bjtu.gs.main.login.api
 
 class LoginResponse {
     var token: String? = null
+    var userInfo: UserInfoModel? = null
 }

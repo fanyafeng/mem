@@ -6,6 +6,8 @@ import androidx.lifecycle.viewModelScope
 import cn.edu.bjtu.gs.cache.CacheDatabase
 import cn.edu.bjtu.gs.cache.CacheModel
 import cn.edu.bjtu.gs.http.HttpParamsBuilderImpl.Companion.TOKEN
+import cn.edu.bjtu.gs.main.login.manager.UserInfoManager
+import cn.edu.bjtu.gs.main.login.model.UserInfoModel
 import kotlinx.coroutines.launch
 
 
@@ -56,6 +58,30 @@ class LoginViewModel : ViewModel() {
                 dao.insert(CacheModel(TOKEN, tokenFrom))
             } else {
                 dao.update(CacheModel(TOKEN, tokenFrom))
+            }
+        }
+    }
+
+    suspend fun saveUserInfo(context: Context, userInfoModel: UserInfoModel?) {
+        viewModelScope.launch {
+            val dao = CacheDatabase.getDatabase(context).cacheDao()
+            val userInfoString = dao.query(UserInfoManager.USER_INFO_KEY)?.value
+            if (userInfoModel != null) {
+                if (userInfoString.isNullOrEmpty()) {
+                    dao.insert(
+                        CacheModel(
+                            UserInfoManager.USER_INFO_KEY,
+                            userInfoModel.jsonString()
+                        )
+                    )
+                } else {
+                    dao.update(
+                        CacheModel(
+                            UserInfoManager.USER_INFO_KEY,
+                            userInfoModel.jsonString()
+                        )
+                    )
+                }
             }
         }
     }
