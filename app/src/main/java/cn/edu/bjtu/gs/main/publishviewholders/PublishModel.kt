@@ -1,4 +1,4 @@
-package cn.edu.bjtu.gs.main.publishactivity
+package cn.edu.bjtu.gs.main.publishviewholders
 
 import cn.edu.bjtu.gs.BaseModel
 

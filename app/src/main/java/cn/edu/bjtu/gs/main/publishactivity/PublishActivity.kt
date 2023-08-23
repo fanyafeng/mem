@@ -7,6 +7,14 @@ import cn.edu.bjtu.gs.BaseActivity
 import cn.edu.bjtu.gs.R
 import cn.edu.bjtu.gs.annon.UserStatusSettingAnnotation
 import cn.edu.bjtu.gs.databinding.ActivityPublishBinding
+import cn.edu.bjtu.gs.main.publishviewholders.PublishChooseViewHolder
+import cn.edu.bjtu.gs.main.publishviewholders.PublishInputViewHolder
+import cn.edu.bjtu.gs.main.publishviewholders.PublishInputWithTitleViewHolder
+import cn.edu.bjtu.gs.main.publishviewholders.PublishModel
+import cn.edu.bjtu.gs.main.publishviewholders.PublishViewModel
+import com.ripple.sdk.ui.recyclerview.multitypviewholder.factory.StrategyBaseIntBindingFactory
+import com.ripple.sdk.ui.recyclerview.multitypviewholder.linkmap.StrategyWithPriorityIntBindingLinkedMap
+import java.util.concurrent.ConcurrentHashMap
 
 @UserStatusSettingAnnotation(true)
 class PublishActivity : BaseActivity() {
@@ -23,6 +31,14 @@ class PublishActivity : BaseActivity() {
     }
 
     private fun initView() {
+        StrategyWithPriorityIntBindingLinkedMap<PublishViewModel, PublishModel>().apply {
+            register(PublishInputWithTitleViewHolder.Factory()::class.java)
+            register(PublishInputViewHolder.Factory()::class.java)
+            register(PublishChooseViewHolder.Factory()::class.java)
+        }
+
+
+
         binding.ivBack.setOnClickListener {
             finish()
         }
@@ -30,4 +46,6 @@ class PublishActivity : BaseActivity() {
 
     private fun initData() {
     }
+
+
 }

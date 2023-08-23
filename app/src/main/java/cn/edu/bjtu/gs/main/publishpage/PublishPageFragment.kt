@@ -7,10 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import cn.edu.bjtu.gs.R
 import cn.edu.bjtu.gs.databinding.FragmentPublishPageBinding
 import cn.edu.bjtu.gs.main.publishactivity.PublishActivity
 import cn.edu.bjtu.gs.main.publishrequirement.PublishRequirementActivity
+import cn.edu.bjtu.gs.main.publishviewholders.PublishModel
+import cn.edu.bjtu.gs.main.publishviewholders.PublishViewModel
+import com.ripple.sdk.ui.recyclerview.multitypviewholder.factory.StrategyBaseIntBindingFactory
+import java.util.concurrent.ConcurrentHashMap
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,7 +24,7 @@ class PublishPageFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     private var binding: FragmentPublishPageBinding? = null
-    private lateinit var viewModel: PublishPageViewModel
+    private lateinit var viewModel: PublishViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,7 +44,7 @@ class PublishPageFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this)[PublishPageViewModel::class.java]
+        viewModel = ViewModelProvider(this)[PublishViewModel::class.java]
         init()
         initView()
         initData()
@@ -79,5 +82,8 @@ class PublishPageFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+
+        val pool =
+            ConcurrentHashMap<Int, StrategyBaseIntBindingFactory<PublishViewModel, PublishModel>>()
     }
 }
