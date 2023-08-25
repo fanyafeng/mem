@@ -1,8 +1,12 @@
 package cn.edu.bjtu.gs.main.publishviewholders
 
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import cn.edu.bjtu.gs.databinding.ItemPublishInputLayoutBinding
 import com.ripple.sdk.ui.recyclerview.multitypviewholder.annotation.ViewHolderIntAnnotation
 import com.ripple.sdk.ui.recyclerview.multitypviewholder.factory.StrategyBaseIntBindingFactory
+import com.ripple.sdk.ui.recyclerview.multitypviewholder.viewholder.StrategyBaseBindingViewHolder
+import com.ripple.tool.kttypelians.SuccessLambda
 import java.util.concurrent.ConcurrentHashMap
 
 /**
@@ -13,14 +17,33 @@ import java.util.concurrent.ConcurrentHashMap
  *///Github See: https://github.com/fanyafeng
 
 
-class PublishInputViewHolder(binding: ItemPublishInputLayoutBinding) :
+class PublishInputViewHolder(
+    binding: ItemPublishInputLayoutBinding,
+    val lambda: SuccessLambda<String>
+) :
     AbsPublishBindingBaseViewHolder(binding) {
     override fun bindData(viewModel: PublishViewModel?, dataSource: PublishModel?, position: Int) {
         super.bindData(viewModel, dataSource, position)
     }
 
-    @ViewHolderIntAnnotation(PUBLISH_INPUT)
-    class Factory() :
+    class Factory(private val lambda: SuccessLambda<String>) :
         AbsPublishBindingViewHolderAutoFactory<PublishInputViewHolder, ItemPublishInputLayoutBinding>(
-        )
+        ) {
+        override fun onCreateViewHolder(
+            parent: ViewGroup,
+            viewType: Int
+        ): StrategyBaseBindingViewHolder<PublishViewModel, PublishModel> {
+            return PublishInputViewHolder(
+                ItemPublishInputLayoutBinding.inflate(
+                    LayoutInflater.from(
+                        parent.context
+                    ), parent, false
+                ), lambda
+            )
+        }
+
+        override fun getPoolableType(): Int {
+            return PUBLISH_INPUT
+        }
+    }
 }

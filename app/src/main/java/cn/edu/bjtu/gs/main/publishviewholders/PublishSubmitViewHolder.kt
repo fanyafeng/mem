@@ -2,22 +2,20 @@ package cn.edu.bjtu.gs.main.publishviewholders
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import cn.edu.bjtu.gs.databinding.ItemPublishChooseWithTitleLayoutBinding
-import cn.edu.bjtu.gs.databinding.ItemPublishInputWithTitleLayoutBinding
-import com.ripple.sdk.ui.recyclerview.multitypviewholder.annotation.ViewHolderIntAnnotation
+import cn.edu.bjtu.gs.databinding.ItemPublishSubmitLayoutBinding
 import com.ripple.sdk.ui.recyclerview.multitypviewholder.viewholder.StrategyBaseBindingViewHolder
 import com.ripple.tool.kttypelians.SuccessLambda
 
 /**
  * Author: fanyafeng
- * Date: 2023/8/23 16:34
+ * Date: 2023/8/25 15:18
  * Email: fanyafeng@live.cn
  * Description:
  *///Github See: https://github.com/fanyafeng
 
 
-class PublishChooseViewHolder(
-    binding: ItemPublishChooseWithTitleLayoutBinding,
+class PublishSubmitViewHolder(
+    binding: ItemPublishSubmitLayoutBinding,
     val lambda: SuccessLambda<String>
 ) :
     AbsPublishBindingBaseViewHolder(binding) {
@@ -26,15 +24,14 @@ class PublishChooseViewHolder(
     }
 
     class Factory(private val lambda: SuccessLambda<String>) :
-        AbsPublishBindingViewHolderAutoFactory<PublishChooseViewHolder, ItemPublishChooseWithTitleLayoutBinding>(
-        ) {
+        AbsPublishBindingViewHolderAutoFactory<PublishSubmitViewHolder, ItemPublishSubmitLayoutBinding>() {
 
         override fun onCreateViewHolder(
             parent: ViewGroup,
             viewType: Int
         ): StrategyBaseBindingViewHolder<PublishViewModel, PublishModel> {
-            return PublishChooseViewHolder(
-                ItemPublishChooseWithTitleLayoutBinding.inflate(
+            return PublishSubmitViewHolder(
+                ItemPublishSubmitLayoutBinding.inflate(
                     LayoutInflater.from(
                         parent.context
                     ), parent, false
@@ -42,9 +39,9 @@ class PublishChooseViewHolder(
             )
         }
 
+
         override fun getPoolableType(): Int {
-            return PUBLISH_CHOOSE
+            return PUBLISH_SUBMIT
         }
     }
-
 }

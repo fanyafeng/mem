@@ -18,5 +18,6 @@ abstract class AbsPublishBindingBaseViewHolder(binding: ViewBinding) :
         const val PUBLISH_INPUT_WITH_TITLE = 0
         const val PUBLISH_INPUT = 1
         const val PUBLISH_CHOOSE = 2
+        const val PUBLISH_SUBMIT = 3
     }
 }
