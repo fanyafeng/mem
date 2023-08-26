@@ -98,8 +98,8 @@ dependencies {
     //datastore
     implementation("androidx.datastore:datastore:1.0.0")
     implementation("androidx.datastore:datastore-preferences:1.0.0")
-
-    implementation("com.timehop.stickyheadersrecyclerview:library:0.4.3@aar")
+    api("androidx.recyclerview:recyclerview:1.2.1")
+//    implementation("com.timehop.stickyheadersrecyclerview:library:0.4.3@aar")
 
 
     //android room
