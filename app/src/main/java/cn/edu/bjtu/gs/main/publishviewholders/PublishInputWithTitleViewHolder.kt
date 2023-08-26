@@ -19,13 +19,19 @@ import java.util.concurrent.ConcurrentHashMap
 
 
 class PublishInputWithTitleViewHolder(
-    binding: ItemPublishInputWithTitleLayoutBinding,
+    val binding: ItemPublishInputWithTitleLayoutBinding,
     val lambda: SuccessLambda<String>
 ) :
     AbsPublishBindingBaseViewHolder(binding) {
 
     override fun bindData(viewModel: PublishViewModel?, dataSource: PublishModel?, position: Int) {
         super.bindData(viewModel, dataSource, position)
+        dataSource?.title?.let {
+            binding.tvTitle.text = it
+        }
+        dataSource?.hintTitle?.let {
+            binding.etContent.hint = it
+        }
     }
 
     class Factory(private val lambda: SuccessLambda<String>) :

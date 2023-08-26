@@ -15,12 +15,15 @@ import com.ripple.tool.kttypelians.SuccessLambda
 
 
 class PublishSubmitViewHolder(
-    binding: ItemPublishSubmitLayoutBinding,
+    val binding: ItemPublishSubmitLayoutBinding,
     val lambda: SuccessLambda<String>
 ) :
     AbsPublishBindingBaseViewHolder(binding) {
     override fun bindData(viewModel: PublishViewModel?, dataSource: PublishModel?, position: Int) {
         super.bindData(viewModel, dataSource, position)
+        dataSource?.title?.let {
+            binding.tvSubmit.text = it
+        }
     }
 
     class Factory(private val lambda: SuccessLambda<String>) :

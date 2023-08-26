@@ -18,12 +18,15 @@ import java.util.concurrent.ConcurrentHashMap
 
 
 class PublishInputViewHolder(
-    binding: ItemPublishInputLayoutBinding,
+    val binding: ItemPublishInputLayoutBinding,
     val lambda: SuccessLambda<String>
 ) :
     AbsPublishBindingBaseViewHolder(binding) {
     override fun bindData(viewModel: PublishViewModel?, dataSource: PublishModel?, position: Int) {
         super.bindData(viewModel, dataSource, position)
+        dataSource?.hintTitle?.let {
+            binding.etContent.hint = it
+        }
     }
 
     class Factory(private val lambda: SuccessLambda<String>) :
