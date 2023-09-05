@@ -3,6 +3,7 @@ package cn.edu.bjtu.gs.main.homepage
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
+import cn.edu.bjtu.gs.main.homepage.viewholders.AbsHomePageBindingBaseViewHolder
 import cn.edu.bjtu.gs.main.homepage.viewholders.HomePageEmptyViewHolder
 import cn.edu.bjtu.gs.main.minepage.MinePageModel
 import com.ripple.sdk.ui.recyclerview.multitypviewholder.viewholder.StrategyBaseBindingViewHolder
@@ -39,6 +40,10 @@ class HomePageAdapter :
     ) {
         val model = getItem(position)
         holder.bindData(viewModel, model, position)
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return AbsHomePageBindingBaseViewHolder.TOP_ACTIVITY
     }
 
     companion object {

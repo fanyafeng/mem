@@ -13,7 +13,7 @@ import com.ripple.sdk.ui.recyclerview.multitypviewholder.annotation.ViewHolderIn
  *///Github See: https://github.com/fanyafeng
 
 
-class HomePageActivityViewHolder(binding: ItemHomePageActivityLayoutBinding) :
+class HomePageActivityViewHolder(val binding: ItemHomePageActivityLayoutBinding) :
     AbsHomePageBindingBaseViewHolder(binding) {
 
     override fun bindData(
@@ -22,6 +22,8 @@ class HomePageActivityViewHolder(binding: ItemHomePageActivityLayoutBinding) :
         position: Int
     ) {
         super.bindData(viewModel, dataSource, position)
+        binding.activityTitle.text = dataSource?.title ?: ""
+        binding.activityDesc.text = dataSource?.content ?: ""
     }
 
     @ViewHolderIntAnnotation(TOP_ACTIVITY)

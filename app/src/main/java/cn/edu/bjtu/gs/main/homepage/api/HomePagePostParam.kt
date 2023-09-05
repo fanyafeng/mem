@@ -13,7 +13,7 @@ import com.ripple.http.base.annotation.HttpRequest
 
 @HttpRequest(Urls.URL_BULLETIN_LIST)
 class HomePagePostParam : HttpRequestParamsImpl() {
-    var status: String? = null
-    var enrollStatus: String? = null
+    var status: String? = "0"
+    var enrollStatus: String? = "0"
     var enrollment: String? = null
 }

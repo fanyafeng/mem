@@ -67,6 +67,7 @@ dependencies {
     implementation("com.google.protobuf:protobuf-kotlin:3.21.6")
     implementation("com.google.protobuf.nano:protobuf-javanano:3.1.0")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    implementation(files("src/main/libs/pinyin4j-2.5.0.jar"))
 
     testImplementation("junit:junit:4.13.2")
 
@@ -113,5 +114,9 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
 
     implementation("org.greenrobot:eventbus:3.3.1")
+
+//    implementation("com.github.promeg:tinypinyin:2.0.3") // TinyPinyin核心包，约80KB
+//    implementation("com.github.promeg:tinypinyin-lexicons-android-cncity:2.0.3") // 可选，适用于Android的中国地区词典
+//    implementation("com.github.promeg:tinypinyin-lexicons-java-cncity:2.0.3") // 可选，适用于Java的中国地区词典
 
 }

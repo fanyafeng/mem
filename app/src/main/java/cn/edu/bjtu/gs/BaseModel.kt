@@ -39,3 +39,4 @@ package cn.edu.bjtu.gs
 
 
 interface BaseModel : java.io.Serializable
+
