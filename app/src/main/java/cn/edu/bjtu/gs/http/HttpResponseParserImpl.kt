@@ -2,10 +2,12 @@ package cn.edu.bjtu.gs.http
 
 import com.alibaba.fastjson.JSON
 import com.alibaba.fastjson.JSONObject
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import com.ripple.http.base.IHttpResponse
 import com.ripple.http.base.abs.AbsHttpResponseParser
+import java.lang.reflect.Type
+import kotlin.reflect.KClass
+import kotlin.reflect.javaType
+import kotlin.reflect.typeOf
 
 
 /**
@@ -28,6 +30,20 @@ open class HttpResponseParserImpl : AbsHttpResponseParser() {
         response.message = jsonObject.getString("msg")
         response.data = jsonObject.getString("data")
         val itemClazz = response.itemKClass
-        return JSON.parseObject<T>(response.data, itemClazz)
+
+//        return Gson().fromJson<T>(response.data, itemClazz)
+//        return JSON.parseObject<T>(response.data, itemClazz)
+
+
+        return if (response.isListResult) {
+            JSON.parseArray(
+                response.data,
+                (response.itemKType!!.classifier as KClass<*>).java
+            ) as T
+        } else {
+            JSON.parseObject<T>(response.data, itemClazz)
+        }
     }
+
+
 }

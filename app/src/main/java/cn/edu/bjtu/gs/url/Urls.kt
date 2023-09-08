@@ -56,5 +56,7 @@ object Urls {
 
     const val URL_LOGOUT = "/logout"
 
-    const val URL_INFO_LIST="/info/list"
+    const val URL_INFO_LIST = "/info/list"
+
+    const val URL_FRIEND_LIST = "/friend/friendlist"
 }

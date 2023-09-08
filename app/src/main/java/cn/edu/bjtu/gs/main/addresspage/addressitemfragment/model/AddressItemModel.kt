@@ -82,5 +82,9 @@ class AddressItemModel : BaseModel {
         return result
     }
 
+    override fun toString(): String {
+        return "AddressItemModel(headerId=$headerId, createBy=$createBy, createTime=$createTime, updateBy=$updateBy, updateTime=$updateTime, remark=$remark, id=$id, number=$number, idcard=$idcard, type=$type, userId=$userId, region=$region, industry=$industry, hobby=$hobby, advantage=$advantage, unit=$unit, title=$title, delFlag=$delFlag, name=$name, phone=$phone)"
+    }
+
 
 }

@@ -36,6 +36,8 @@ class AddressItemAdapter :
         holder: BindingViewHolder<ItemAddressPersionLayoutBinding>,
         position: Int
     ) {
+        val model = getItem(position)
+        holder.binding.personName.text = model.name
     }
 
     override fun getHeaderId(position: Int): Long {

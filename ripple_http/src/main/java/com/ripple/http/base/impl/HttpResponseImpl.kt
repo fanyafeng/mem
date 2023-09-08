@@ -3,6 +3,7 @@ package com.ripple.http.base.impl
 import com.ripple.http.base.IRequestParams
 import com.ripple.http.base.IResponseParser
 import com.ripple.http.base.abs.AbsHttpResponse
+import kotlin.reflect.KType
 
 
 /**
@@ -13,7 +14,6 @@ import com.ripple.http.base.abs.AbsHttpResponse
  */
 class HttpResponseImpl(
     override var requestParams: IRequestParams.IHttpRequestParams
-
 ) :
     AbsHttpResponse() {
     override var parser: IResponseParser = HttpResponseParserImpl()

@@ -1,6 +1,7 @@
 package com.ripple.http.base
 
 import java.io.Serializable
+import kotlin.reflect.KType
 
 
 /**
@@ -53,6 +54,8 @@ interface IHttpResponse : Serializable {
      * 解析结果后的的class
      */
     var itemKClass: Class<*>
+
+    var itemKType: KType?
 
     /**
      * 序列化返回结果
