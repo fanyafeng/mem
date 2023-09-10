@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import cn.edu.bjtu.gs.R
 import cn.edu.bjtu.gs.databinding.FragmentHomePageBinding
+import cn.edu.bjtu.gs.event.LoginEvent
+import cn.edu.bjtu.gs.main.BaseFragment
 import cn.edu.bjtu.gs.main.forgotpassword.ForgotPasswordActivity
 import cn.edu.bjtu.gs.main.homepage.api.HomePagePostParam
 import cn.edu.bjtu.gs.main.homepage.api.HomePageResponse
@@ -25,19 +27,15 @@ import com.ripple.http.extend.httpPost
 import com.ripple.log.tpyeextend.toLogD
 import com.ripple.sdk.ui.recyclerview.multitypviewholder.factory.StrategyBaseIntBindingFactory
 import com.ripple.sdk.ui.recyclerview.multitypviewholder.linkmap.StrategyWithPriorityIntBindingLinkedMap
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 import java.util.concurrent.ConcurrentHashMap
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [HomePageFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class HomePageFragment : Fragment() {
+class HomePageFragment : BaseFragment() {
     private var param1: String? = null
     private var param2: String? = null
 
@@ -46,6 +44,7 @@ class HomePageFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        EventBus.getDefault().register(this)
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
@@ -90,6 +89,11 @@ class HomePageFragment : Fragment() {
         initData()
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onEvent(event: LoginEvent) {
+        initData()
+    }
+
     companion object {
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
@@ -106,6 +110,7 @@ class HomePageFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        EventBus.getDefault().unregister(this)
         binding = null
     }
 }

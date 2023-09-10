@@ -24,6 +24,9 @@ class PublishSubmitViewHolder(
         dataSource?.title?.let {
             binding.tvSubmit.text = it
         }
+        binding.tvSubmit.setOnClickListener {
+            lambda?.invoke("")
+        }
     }
 
     class Factory(private val lambda: SuccessLambda<String>) :

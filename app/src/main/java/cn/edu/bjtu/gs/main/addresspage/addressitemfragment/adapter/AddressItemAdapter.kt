@@ -3,12 +3,9 @@ package cn.edu.bjtu.gs.main.addresspage.addressitemfragment.adapter
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView
 import cn.edu.bjtu.gs.databinding.ItemAddressPersionHeaderLayoutBinding
 import cn.edu.bjtu.gs.databinding.ItemAddressPersionLayoutBinding
-import cn.edu.bjtu.gs.databinding.ItemNotificationMessageLayoutBinding
 import cn.edu.bjtu.gs.main.addresspage.addressitemfragment.model.AddressItemModel
-import cn.edu.bjtu.gs.main.notification.NotificationModel
 import cn.edu.bjtu.gs.view.stickyheadersrecyclerview.StickyRecyclerHeadersAdapter
 import com.ripple.sdk.binding.BindingViewHolder
 import com.ripple.sdk.binding.newBindingViewHolder
@@ -42,7 +39,7 @@ class AddressItemAdapter :
 
     override fun getHeaderId(position: Int): Long {
         val model = getItem(position)
-        return model.headerId ?: 0L
+        return model.getNameHeaderId() ?: 0L
     }
 
     override fun onCreateHeaderViewHolder(parent: ViewGroup): BindingViewHolder<ItemAddressPersionHeaderLayoutBinding> {
@@ -53,6 +50,8 @@ class AddressItemAdapter :
         holder: BindingViewHolder<ItemAddressPersionHeaderLayoutBinding>?,
         position: Int
     ) {
+        val model = getItem(position)
+        holder?.binding?.personNameHeader?.text = model.getNameHeaderId()?.toString() ?: ""
     }
 
 

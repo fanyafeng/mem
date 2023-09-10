@@ -19,7 +19,6 @@ import android.view.animation.Interpolator;
 import android.widget.Scroller;
 
 
-
 import java.util.LinkedList;
 import java.util.List;
 
@@ -433,7 +432,7 @@ public class WheelView extends View {
         }
 
         if (centerDrawable == null) {
-            centerDrawable = getContext().getResources().getDrawable(R.drawable.wheel_val);
+            centerDrawable = getContext().getResources().getDrawable(R.drawable.wheel_val, null);
         }
 
         if (topShadow == null) {
@@ -723,7 +722,7 @@ public class WheelView extends View {
         // draw label
         if (labelLayout != null) {
             canvas.save();
-            canvas.translate(0, (int) (getItemHeight() * 1.75));
+            canvas.translate(0, (int) (getItemHeight() * 1.75 + getItemHeight()));
             labelLayout.draw(canvas);
             canvas.restore();
         }

@@ -21,5 +21,6 @@ abstract class AbsPublishBindingBaseViewHolder(binding: ViewBinding) :
         const val PUBLISH_SUBMIT = 3
         const val PUBLISH_TITLE = 4
         const val PUBLISH_IMAGE = 5
+        const val PUBLISH_TIME = 6
     }
 }

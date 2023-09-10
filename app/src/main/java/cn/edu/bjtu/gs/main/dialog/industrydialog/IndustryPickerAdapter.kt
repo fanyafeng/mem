@@ -1,8 +1,11 @@
-package cn.edu.bjtu.gs.url
+package cn.edu.bjtu.gs.main.dialog.industrydialog
+
+import cn.edu.bjtu.gs.view.picker.WheelAdapter
+
 
 /**
  * Author: fanyafeng
- * Data: 2023/7/24 15:36
+ * Data: 2023/8/2 10:33
  * Email: fanyafeng@live.cn
  * Description:
  *                                   _ooOoo_
@@ -37,54 +40,19 @@ package cn.edu.bjtu.gs.url
  *///Github See: https://github.com/fanyafeng
 
 
-object Urls {
-    const val BASE_URL = "http://106.75.240.243:8029"
+class IndustryPickerAdapter : WheelAdapter {
 
-    const val URL_LOGIN = "/login"
+    var list: List<IndustryModel>? = null
 
-    const val URL_REGISTER = "/register"
+    override fun getItemsCount(): Int {
+        return list?.size ?: 0
+    }
 
-    const val URL_VERIFY = "/verify"
+    override fun getItem(index: Int): String {
+        return list?.get(index)?.dictLabel ?: ""
+    }
 
-    const val URL_REGION = "/system/user/profile/getRegion"
-
-    const val URL_BULLETIN_LIST = "/bulletin/list"
-
-    const val URL_SEND_PHONE_CODE = "/getSmsCode"
-
-    const val URL_FORGOT_PASSWORD = "/phoneVerify"
-
-    const val URL_LOGOUT = "/logout"
-
-    const val URL_INFO_LIST = "/info/list"
-
-    const val URL_FRIEND_LIST = "/friend/friendlist"
-
-    const val URL_INDUSTRY = "/system/dict/data/type/sys_unit_nature"
-
-    const val URL_HOBBY = "/system/dict/data/type/sys_hobby"
-
-    const val URL_ADVANTAGE = "/system/dict/data/type/sys_advantage"
-
-    const val URL_ACTIVITY = "/system/dict/data/type/sys_activity"
-
-    const val URL_DEMAND = "/system/dict/data/type/sys_demand"
-
-    const val URL_NATION = "/system/dict/data/type/sys_nation"
-
-    const val URL_POLITICAL_OUTLOOK = "/system/dict/data/type/sys_political_outlook"
-
-    const val URL_CULTURE_METHOD = "/system/dict/data/type/sys_culture_method"
-
-    const val URL_CULTURE_LEVEL = "/system/dict/data/type/sys_culture_level"
-
-    const val URL_DEPARTURE_METHOD = "/system/dict/data/type/sys_departure_method"
-
-    const val URL_DEPARTURE_TIME = "/system/dict/data/type/sys_departure_time"
-
-    const val URL_DEPARTURE_PLACE = "/system/dict/data/type/sys_departure_place"
-
-    const val URL_MARITAL_STATUS = "/system/dict/data/type/sys_marital_status"
-
-    const val URL_UNIT_NATURE = "/system/dict/data/type/sys_unit_nature"
+    override fun getMaximumLength(): Int {
+        return 5
+    }
 }

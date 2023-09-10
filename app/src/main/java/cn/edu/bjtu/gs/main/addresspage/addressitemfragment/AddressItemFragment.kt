@@ -7,14 +7,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import cn.edu.bjtu.gs.R
 import cn.edu.bjtu.gs.databinding.FragmentAddressItemBinding
+import cn.edu.bjtu.gs.event.LogoutEvent
 import cn.edu.bjtu.gs.main.addresspage.addressitemfragment.adapter.AddressItemAdapter
 import cn.edu.bjtu.gs.main.addresspage.addressitemfragment.api.FriendListPostParam
 import cn.edu.bjtu.gs.main.addresspage.addressitemfragment.model.AddressItemModel
 import com.ripple.http.extend.httpPost
 import com.ripple.log.tpyeextend.toLogD
-import net.sourceforge.pinyin4j.PinyinHelper
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
 class AddressItemFragment : Fragment() {
 
@@ -36,6 +38,7 @@ class AddressItemFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        EventBus.getDefault().register(this)
         viewModel = ViewModelProvider(this)[AddressItemViewModel::class.java]
 //        val text = PinyinHelper.toHanyuPinyinStringArray('中')
 //        val sb = StringBuffer()
@@ -43,6 +46,7 @@ class AddressItemFragment : Fragment() {
 //            sb.append(it)
 //        }
 //        binding?.addressItemEmptyTextView?.text = sb.toString()
+
 
         initView()
         initData()
@@ -57,9 +61,10 @@ class AddressItemFragment : Fragment() {
         httpPost {
             params = FriendListPostParam()
 
-            onSuccess<List<AddressItemModel>> {
-                it.toString().toLogD()
-//                adapter.submitList(it)
+            onSuccess<List<AddressItemModel>> { resultList ->
+                resultList.toString().toLogD()
+                resultList.sortedBy { it.getNameHeaderId() }
+                adapter.submitList(resultList)
 
             }
 
@@ -67,6 +72,17 @@ class AddressItemFragment : Fragment() {
                 it.message.toString().toLogD()
             }
         }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onEvent(event: LogoutEvent) {
+        initData()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
+        EventBus.getDefault().unregister(this)
     }
 
 }

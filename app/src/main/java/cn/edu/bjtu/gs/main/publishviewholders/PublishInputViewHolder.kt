@@ -27,6 +27,7 @@ class PublishInputViewHolder(
         dataSource?.hintTitle?.let {
             binding.etContent.hint = it
         }
+        dataSource?.result = binding.etContent.text.toString().trim()
     }
 
     class Factory(private val lambda: SuccessLambda<String>) :

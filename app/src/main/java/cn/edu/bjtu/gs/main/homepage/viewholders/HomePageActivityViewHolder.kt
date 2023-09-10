@@ -3,6 +3,7 @@ package cn.edu.bjtu.gs.main.homepage.viewholders
 import cn.edu.bjtu.gs.databinding.ItemHomePageActivityLayoutBinding
 import cn.edu.bjtu.gs.main.homepage.HomePageModel
 import cn.edu.bjtu.gs.main.homepage.HomePageViewModel
+import com.bumptech.glide.Glide
 import com.ripple.sdk.ui.recyclerview.multitypviewholder.annotation.ViewHolderIntAnnotation
 
 /**
@@ -24,6 +25,7 @@ class HomePageActivityViewHolder(val binding: ItemHomePageActivityLayoutBinding)
         super.bindData(viewModel, dataSource, position)
         binding.activityTitle.text = dataSource?.title ?: ""
         binding.activityDesc.text = dataSource?.content ?: ""
+//        Glide.get()
     }
 
     @ViewHolderIntAnnotation(TOP_ACTIVITY)

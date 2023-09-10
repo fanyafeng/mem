@@ -8,11 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import cn.edu.bjtu.gs.databinding.FragmentPublishPageBinding
+import cn.edu.bjtu.gs.main.dialog.datadialog.DateChoosePicker
 import cn.edu.bjtu.gs.main.publishactivity.PublishActivity
 import cn.edu.bjtu.gs.main.publishrequirement.PublishRequirementActivity
 import cn.edu.bjtu.gs.main.publishviewholders.PublishModel
 import cn.edu.bjtu.gs.main.publishviewholders.PublishViewModel
+import com.ripple.log.tpyeextend.toLogD
 import com.ripple.sdk.ui.recyclerview.multitypviewholder.factory.StrategyBaseIntBindingFactory
+import java.util.Calendar
 import java.util.concurrent.ConcurrentHashMap
 
 // TODO: Rename parameter arguments, choose names that match
@@ -57,6 +60,20 @@ class PublishPageFragment : Fragment() {
     private fun initView() {
         binding?.leftButton?.setOnClickListener {
             startActivity(Intent(context, PublishActivity::class.java))
+
+//            val now: Calendar = Calendar.getInstance()
+//            now.set(Calendar.YEAR, 1985)
+//
+//            DateChoosePicker(
+//                context,
+//                true,
+//                now.get(Calendar.YEAR),
+//                now.get(Calendar.MONTH),
+//                now.get(Calendar.DATE)
+//            ).setOnDateTimeSetListener {
+//                val birthdayTime = it.time
+//                birthdayTime.time.toString().toLogD()
+//            }.show()
         }
 
         binding?.rightButton?.setOnClickListener {

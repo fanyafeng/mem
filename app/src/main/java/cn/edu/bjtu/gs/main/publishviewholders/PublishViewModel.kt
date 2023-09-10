@@ -11,4 +11,5 @@ import androidx.lifecycle.ViewModel
 
 
 open class PublishViewModel : ViewModel() {
+
 }

@@ -4,6 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import cn.edu.bjtu.gs.databinding.ItemPublishChooseWithTitleLayoutBinding
 import cn.edu.bjtu.gs.databinding.ItemPublishInputWithTitleLayoutBinding
+import cn.edu.bjtu.gs.main.dialog.industrydialog.IndustryDialog
+import cn.edu.bjtu.gs.url.Urls
+import com.ripple.log.tpyeextend.toLogD
 import com.ripple.sdk.ui.recyclerview.multitypviewholder.annotation.ViewHolderIntAnnotation
 import com.ripple.sdk.ui.recyclerview.multitypviewholder.viewholder.StrategyBaseBindingViewHolder
 import com.ripple.tool.kttypelians.SuccessLambda
@@ -28,6 +31,16 @@ class PublishChooseViewHolder(
         }
         dataSource?.hintTitle?.let {
             binding.etContent.text = it
+        }
+
+        binding.root.setOnClickListener {
+            val dialog = IndustryDialog()
+            dialog.showIndustryDialog(binding.root.context, dataSource?.url) {
+                it.dictLabel.toLogD()
+                binding.etContent.text = it.dictLabel
+                dataSource?.result = it.dictLabel
+            }
+
         }
     }
 

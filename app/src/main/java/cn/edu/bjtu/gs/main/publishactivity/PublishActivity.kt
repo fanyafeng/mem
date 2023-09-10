@@ -10,6 +10,7 @@ import cn.edu.bjtu.gs.annon.UserStatusSettingAnnotation
 import cn.edu.bjtu.gs.databinding.ActivityPublishBinding
 import cn.edu.bjtu.gs.main.publishviewholders.AbsPublishBindingBaseViewHolder
 import cn.edu.bjtu.gs.main.publishviewholders.PublishAdapter
+import cn.edu.bjtu.gs.main.publishviewholders.PublishChooseTimeViewHolder
 import cn.edu.bjtu.gs.main.publishviewholders.PublishChooseViewHolder
 import cn.edu.bjtu.gs.main.publishviewholders.PublishEmptyViewHolder
 import cn.edu.bjtu.gs.main.publishviewholders.PublishImageViewHolder
@@ -19,6 +20,8 @@ import cn.edu.bjtu.gs.main.publishviewholders.PublishModel
 import cn.edu.bjtu.gs.main.publishviewholders.PublishSubmitViewHolder
 import cn.edu.bjtu.gs.main.publishviewholders.PublishTitleViewHolder
 import cn.edu.bjtu.gs.main.publishviewholders.PublishViewModel
+import cn.edu.bjtu.gs.url.Urls
+import com.ripple.log.tpyeextend.toLogD
 import com.ripple.sdk.ui.recyclerview.multitypviewholder.factory.StrategyBaseIntBindingFactory
 import com.ripple.sdk.ui.recyclerview.multitypviewholder.linkmap.StrategyWithPriorityIntBindingLinkedMap
 import java.util.concurrent.ConcurrentHashMap
@@ -50,11 +53,12 @@ class PublishActivity : BaseActivity() {
             put(PublishChooseViewHolder.Factory(lambda = {
 
             }))
-            put(PublishSubmitViewHolder.Factory(lambda = {
-
-            }))
             register(PublishTitleViewHolder.Factory::class.java)
             register(PublishImageViewHolder.Factory::class.java)
+            register(PublishChooseTimeViewHolder.Factory::class.java)
+            put(PublishSubmitViewHolder.Factory(lambda = {
+                "提交".toLogD()
+            }))
         }
 
 
@@ -74,11 +78,12 @@ class PublishActivity : BaseActivity() {
             })
             add(PublishModel(AbsPublishBindingBaseViewHolder.PUBLISH_CHOOSE).apply {
                 title = "活动类型"
+                url = Urls.BASE_URL + Urls.URL_ACTIVITY
             })
-            add(PublishModel(AbsPublishBindingBaseViewHolder.PUBLISH_CHOOSE).apply {
+            add(PublishModel(AbsPublishBindingBaseViewHolder.PUBLISH_TIME).apply {
                 title = "活动开始\n时间"
             })
-            add(PublishModel(AbsPublishBindingBaseViewHolder.PUBLISH_CHOOSE).apply {
+            add(PublishModel(AbsPublishBindingBaseViewHolder.PUBLISH_TIME).apply {
                 title = "活动结束\n时间"
             })
             add(PublishModel(AbsPublishBindingBaseViewHolder.PUBLISH_INPUT_WITH_TITLE).apply {
@@ -89,18 +94,19 @@ class PublishActivity : BaseActivity() {
                 title = "活动容量"
                 hintTitle = "请输入活动人员限制数量"
             })
-            add(PublishModel(AbsPublishBindingBaseViewHolder.PUBLISH_CHOOSE).apply {
+            add(PublishModel(AbsPublishBindingBaseViewHolder.PUBLISH_TIME).apply {
                 title = "报名开始\n时间"
             })
-            add(PublishModel(AbsPublishBindingBaseViewHolder.PUBLISH_CHOOSE).apply {
+            add(PublishModel(AbsPublishBindingBaseViewHolder.PUBLISH_TIME).apply {
                 title = "报名截止\n时间"
             })
-            add(PublishModel(AbsPublishBindingBaseViewHolder.PUBLISH_CHOOSE).apply {
+            add(PublishModel(AbsPublishBindingBaseViewHolder.PUBLISH_TIME).apply {
                 title = "可取消报名\n截止时间"
                 hintTitle = "不选则为报名截止前24小时"
             })
             add(PublishModel(AbsPublishBindingBaseViewHolder.PUBLISH_CHOOSE).apply {
                 title = "关联标签"
+                url = Urls.BASE_URL + Urls.URL_INDUSTRY
             })
             add(PublishModel(AbsPublishBindingBaseViewHolder.PUBLISH_TITLE).apply {
                 title = "活动内容"

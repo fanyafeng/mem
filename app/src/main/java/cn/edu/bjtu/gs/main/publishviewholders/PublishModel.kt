@@ -15,6 +15,7 @@ class PublishModel(private val type: Int) : BaseModel {
     var title: String? = null
     var hintTitle: String? = null
     var result: String? = null
+    var url: String? = null
     var imageList: List<String>? = null
     var successLambda: UnitLambda = null
 
@@ -28,7 +29,9 @@ class PublishModel(private val type: Int) : BaseModel {
 
         if (type != other.type) return false
         if (title != other.title) return false
+        if (hintTitle != other.hintTitle) return false
         if (result != other.result) return false
+        if (url != other.url) return false
         if (imageList != other.imageList) return false
         if (successLambda != other.successLambda) return false
 
@@ -38,10 +41,16 @@ class PublishModel(private val type: Int) : BaseModel {
     override fun hashCode(): Int {
         var result1 = type
         result1 = 31 * result1 + (title?.hashCode() ?: 0)
+        result1 = 31 * result1 + (hintTitle?.hashCode() ?: 0)
         result1 = 31 * result1 + (result?.hashCode() ?: 0)
+        result1 = 31 * result1 + (url?.hashCode() ?: 0)
         result1 = 31 * result1 + (imageList?.hashCode() ?: 0)
         result1 = 31 * result1 + (successLambda?.hashCode() ?: 0)
         return result1
+    }
+
+    override fun toString(): String {
+        return "PublishModel(type=$type, title=$title, hintTitle=$hintTitle, result=$result, url=$url, imageList=$imageList, successLambda=$successLambda)"
     }
 
 

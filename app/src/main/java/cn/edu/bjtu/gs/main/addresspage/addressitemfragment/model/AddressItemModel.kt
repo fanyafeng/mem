@@ -1,6 +1,7 @@
 package cn.edu.bjtu.gs.main.addresspage.addressitemfragment.model
 
 import cn.edu.bjtu.gs.BaseModel
+import net.sourceforge.pinyin4j.PinyinHelper
 
 /**
  * Author: fanyafeng
@@ -32,6 +33,18 @@ class AddressItemModel : BaseModel {
     var delFlag: Int? = null
     var name: String? = null
     var phone: String? = null
+
+    fun getNameHeaderId(): Long? {
+        if (!name.isNullOrEmpty() && (name?.length ?: 0) > 0) {
+            val resultCharList = PinyinHelper.toHanyuPinyinStringArray(name!![0])
+            if (resultCharList.isNotEmpty()) {
+                val resultChar = resultCharList[0]
+                headerId = resultChar.toUpperCase().toLong()
+            }
+        }
+        return headerId
+    }
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other !is AddressItemModel) return false
