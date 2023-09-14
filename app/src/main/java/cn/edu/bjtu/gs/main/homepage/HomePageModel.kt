@@ -1,6 +1,7 @@
 package cn.edu.bjtu.gs.main.homepage
 
 import cn.edu.bjtu.gs.BaseModel
+import cn.edu.bjtu.gs.main.homepage.viewholders.AbsHomePageBindingBaseViewHolder
 
 /**
  * Author: fanyafeng
@@ -32,6 +33,7 @@ class HomePageModel : BaseModel {
     var userId: Int? = null
     var userName: String? = null
     var participationStatus: Int? = null
+    var viewHolderType: Int = AbsHomePageBindingBaseViewHolder.TOP_ACTIVITY
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other !is HomePageModel) return false

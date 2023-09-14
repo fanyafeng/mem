@@ -14,7 +14,9 @@ import cn.edu.bjtu.gs.main.BaseFragment
 import cn.edu.bjtu.gs.main.forgotpassword.ForgotPasswordActivity
 import cn.edu.bjtu.gs.main.homepage.api.HomePagePostParam
 import cn.edu.bjtu.gs.main.homepage.api.HomePageResponse
+import cn.edu.bjtu.gs.main.homepage.viewholders.AbsHomePageBindingBaseViewHolder
 import cn.edu.bjtu.gs.main.homepage.viewholders.HomePageActivityViewHolder
+import cn.edu.bjtu.gs.main.homepage.viewholders.HomePageHeaderViewHolder
 import cn.edu.bjtu.gs.main.login.LoginActivity
 import cn.edu.bjtu.gs.main.minepage.MinePageModel
 import cn.edu.bjtu.gs.main.minepage.MinePageViewModel
@@ -41,6 +43,7 @@ class HomePageFragment : BaseFragment() {
 
     private var binding: FragmentHomePageBinding? = null
     private val adapter = HomePageAdapter()
+    private val result: MutableList<HomePageModel> = mutableListOf();
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,6 +57,7 @@ class HomePageFragment : BaseFragment() {
     private fun initView() {
         StrategyWithPriorityIntBindingLinkedMap<HomePageViewModel, HomePageModel>().apply {
             register(HomePageActivityViewHolder.Factory::class.java)
+            register(HomePageHeaderViewHolder.Factory::class.java)
         }
         binding?.homePageRecyclerView?.layoutManager = LinearLayoutManager(context)
     }
@@ -64,9 +68,14 @@ class HomePageFragment : BaseFragment() {
             params = fromParam
 
             onSuccess<HomePageResponse> {
-//                it.rows.toString().toLogD()
+                it.rows.toString().toLogD()
+                result.clear()
                 binding?.homePageRecyclerView?.adapter = adapter
-                adapter.submitList(it.rows)
+                result.add(HomePageModel().apply {
+                    viewHolderType = AbsHomePageBindingBaseViewHolder.TOP_HEADER
+                })
+                result.addAll(it.rows?.toMutableList() ?: mutableListOf())
+                adapter.submitList(result)
             }
 
             onFailed {

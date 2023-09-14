@@ -14,10 +14,20 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:layout_width="359dp"
+        android:layout_width="228dp"
+        android:layout_height="61dp"
+        android:background="@drawable/bjtu_logo"
+        app:layout_constraintBottom_toTopOf="@+id/bottomImage"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/bottomImage"
+        android:layout_width="274dp"
         android:layout_height="140dp"
         android:layout_marginTop="141dp"
-        android:background="@color/cardview_dark_background"
+        android:background="@drawable/home_header"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
