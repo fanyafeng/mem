@@ -35,7 +35,7 @@ class PublishChooseViewHolder(
 
         binding.root.setOnClickListener {
             val dialog = IndustryDialog()
-            dialog.showIndustryDialog(binding.root.context, dataSource?.url) {
+            dialog.showIndustryDialog(binding.root.context, dataSource?.url, dataSource?.title) {
                 it.dictLabel.toLogD()
                 binding.etContent.text = it.dictLabel
                 dataSource?.result = it.dictLabel

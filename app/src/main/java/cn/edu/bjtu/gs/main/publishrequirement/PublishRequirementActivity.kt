@@ -17,7 +17,11 @@ import cn.edu.bjtu.gs.main.publishviewholders.PublishModel
 import cn.edu.bjtu.gs.main.publishviewholders.PublishSubmitViewHolder
 import cn.edu.bjtu.gs.main.publishviewholders.PublishTitleViewHolder
 import cn.edu.bjtu.gs.main.publishviewholders.PublishViewModel
+import cn.edu.bjtu.gs.main.publishviewholders.api.PublishEditPostParams
+import cn.edu.bjtu.gs.main.publishviewholders.api.PublishEditResponse
 import cn.edu.bjtu.gs.url.Urls
+import com.ripple.dialog.extend.showToast
+import com.ripple.http.extend.httpPost
 import com.ripple.sdk.ui.recyclerview.multitypviewholder.factory.StrategyBaseIntBindingFactory
 import com.ripple.sdk.ui.recyclerview.multitypviewholder.linkmap.StrategyWithPriorityIntBindingLinkedMap
 import java.util.concurrent.ConcurrentHashMap
@@ -26,6 +30,7 @@ class PublishRequirementActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPublishRequirementBinding
     private val viewModel by viewModels<PublishViewModel>()
     private val adapter = PublishAdapter()
+    private var targetList = mutableListOf<PublishModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPublishRequirementBinding.inflate(layoutInflater)
@@ -52,7 +57,7 @@ class PublishRequirementActivity : AppCompatActivity() {
             register(PublishImageViewHolder.Factory::class.java)
             register(PublishChooseTimeViewHolder.Factory::class.java)
             put(PublishSubmitViewHolder.Factory(lambda = {
-
+                postData()
             }))
         }
     }
@@ -96,7 +101,52 @@ class PublishRequirementActivity : AppCompatActivity() {
                 }
             })
         }
+        this.targetList = list
         adapter.submitList(list)
+    }
+
+    private fun postData() {
+//        var canPostData = true
+//        targetList.forEach {
+//            if (it.result.isNullOrEmpty()) {
+//                canPostData = false
+//                showToast(
+//                    it.title + "不能为空"
+//                )
+//                return@forEach
+//            }
+//        }
+//        if (!canPostData) {
+//            return
+//        }
+
+
+        httpPost {
+            val fromParam = PublishEditPostParams()
+            fromParam.title = targetList[0].result ?: ""
+            fromParam.type = targetList[1].result ?: ""
+            fromParam.startTime = targetList[2].result ?: ""
+            fromParam.endTime = targetList[3].result ?: ""
+            fromParam.address = targetList[4].result ?: ""
+            fromParam.volume = targetList[5].result ?: ""
+            fromParam.enrollStartTime = targetList[6].result ?: ""
+            fromParam.enrollEndTime = targetList[7].result ?: ""
+            fromParam.cancelEndTime = targetList[8].result ?: ""
+            fromParam.tag = targetList[9].result ?: ""
+            fromParam.content = targetList[10].result ?: ""
+
+            params = fromParam
+
+            onSuccess<PublishEditResponse> {
+                showToast("发布成功")
+                finish()
+            }
+
+            onFailed {
+                showToast(it.message ?: "未知错误")
+            }
+
+        }
     }
 
     companion object {

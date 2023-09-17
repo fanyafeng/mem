@@ -28,6 +28,7 @@ class IndustryDialog {
     fun showIndustryDialog(
         context: Context,
         url: String? = null,
+        title: String? = null,
         lambda: SuccessLambda<IndustryModel> = null
     ) {
         if (dialogView == null) {
@@ -45,6 +46,10 @@ class IndustryDialog {
         if (dialogBinding == null) {
             dialogBinding = DialogOneItemPickerLayoutBinding.bind(dialogView!!)
             dialogBinding?.firstWheel?.visibleItems = 5
+            title?.let {
+                dialogBinding?.title?.text = it
+            }
+
 
             dialogBinding?.cancel?.setOnClickListener {
                 dialog?.dismiss()

@@ -87,4 +87,6 @@ object Urls {
     const val URL_MARITAL_STATUS = "/system/dict/data/type/sys_marital_status"
 
     const val URL_UNIT_NATURE = "/system/dict/data/type/sys_unit_nature"
+
+    const val URL_PUBLISH_EDIT = "/person/published/edit"
 }

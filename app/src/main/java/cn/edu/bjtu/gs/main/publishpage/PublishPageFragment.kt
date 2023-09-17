@@ -14,6 +14,7 @@ import cn.edu.bjtu.gs.main.publishrequirement.PublishRequirementActivity
 import cn.edu.bjtu.gs.main.publishviewholders.PublishModel
 import cn.edu.bjtu.gs.main.publishviewholders.PublishViewModel
 import com.ripple.log.tpyeextend.toLogD
+import com.ripple.media.picker.image.extend.imagePick
 import com.ripple.sdk.ui.recyclerview.multitypviewholder.factory.StrategyBaseIntBindingFactory
 import java.util.Calendar
 import java.util.concurrent.ConcurrentHashMap
@@ -59,7 +60,11 @@ class PublishPageFragment : Fragment() {
 
     private fun initView() {
         binding?.leftButton?.setOnClickListener {
-            startActivity(Intent(context, PublishActivity::class.java))
+//            startActivity(Intent(context, PublishActivity::class.java))
+
+            this.context?.imagePick {
+
+            }
 
 //            val now: Calendar = Calendar.getInstance()
 //            now.set(Calendar.YEAR, 1985)

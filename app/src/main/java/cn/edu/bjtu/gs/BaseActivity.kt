@@ -26,7 +26,7 @@ open class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         lifecycleScope.launch {
-            if (UserInfoManager.getInstance().userInfo != null) {
+            if (UserInfoManager.getInstance().userInfo == null) {
                 val dao = CacheDatabase.getDatabase(this@BaseActivity).cacheDao()
                 val userInfoString = dao.query(UserInfoManager.USER_INFO_KEY)?.value
                 if (!userInfoString.isNullOrEmpty()) {

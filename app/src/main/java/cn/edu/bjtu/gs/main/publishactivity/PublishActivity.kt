@@ -20,7 +20,11 @@ import cn.edu.bjtu.gs.main.publishviewholders.PublishModel
 import cn.edu.bjtu.gs.main.publishviewholders.PublishSubmitViewHolder
 import cn.edu.bjtu.gs.main.publishviewholders.PublishTitleViewHolder
 import cn.edu.bjtu.gs.main.publishviewholders.PublishViewModel
+import cn.edu.bjtu.gs.main.publishviewholders.api.PublishEditPostParams
+import cn.edu.bjtu.gs.main.publishviewholders.api.PublishEditResponse
 import cn.edu.bjtu.gs.url.Urls
+import com.ripple.dialog.extend.showToast
+import com.ripple.http.extend.httpPost
 import com.ripple.log.tpyeextend.toLogD
 import com.ripple.sdk.ui.recyclerview.multitypviewholder.factory.StrategyBaseIntBindingFactory
 import com.ripple.sdk.ui.recyclerview.multitypviewholder.linkmap.StrategyWithPriorityIntBindingLinkedMap
@@ -32,6 +36,7 @@ class PublishActivity : BaseActivity() {
     private lateinit var binding: ActivityPublishBinding
     private val viewModel by viewModels<PublishViewModel>()
     private val adapter = PublishAdapter()
+    private var targetList = mutableListOf<PublishModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -120,11 +125,32 @@ class PublishActivity : BaseActivity() {
             add(PublishModel(AbsPublishBindingBaseViewHolder.PUBLISH_SUBMIT).apply {
                 title = "发布"
                 successLambda = {
-
+                    postData()
                 }
             })
         }
+        this.targetList = list
         adapter.submitList(list)
+    }
+
+    private fun postData() {
+        httpPost {
+            val fromParam = PublishEditPostParams()
+            fromParam.title = targetList[0].result ?: ""
+            fromParam.type = targetList[1].result ?: ""
+            fromParam.volume = targetList[2].result ?: ""
+            fromParam.endTime = targetList[3].result ?: ""
+            fromParam.tag = targetList[4].result ?: ""
+            fromParam.content = targetList[5].result ?: ""
+
+            onSuccess<PublishEditResponse> {
+
+            }
+
+            onFailed {
+                showToast(it.message ?: "未知错误")
+            }
+        }
     }
 
 

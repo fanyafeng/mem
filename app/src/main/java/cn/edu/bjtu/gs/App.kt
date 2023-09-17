@@ -1,6 +1,12 @@
 package cn.edu.bjtu.gs
 
 import android.app.Application
+import android.graphics.Color
+import cn.edu.bjtu.gs.appconfig.image.LoadFrameImpl
+import com.ripple.media.picker.RippleMediaPick
+import com.ripple.media.picker.config.MediaThemeConfig
+import com.ripple.media.picker.config.impl.ThemeConfig
+import com.ripple.media.picker.image.RippleImagePick
 
 
 /**
@@ -49,5 +55,14 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         application = this
+
+        //图片选择器
+        RippleMediaPick.getInstance().setImageLoadFrame(LoadFrameImpl())
+            .setThemeConfig(
+                ThemeConfig.Builder().setNavigationIcon(R.drawable.back_white_arrow)
+                    .setStatusBarColor(
+                        Color.BLACK
+                    ).setToolbarColor(Color.BLACK).setLight(false).build()
+            )
     }
 }
